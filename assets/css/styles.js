@@ -1,0 +1,173 @@
+import { Dimensions,StyleSheet } from 'react-native'
+import COLORS from '../colors/colors'
+const {width,height}=Dimensions.get("window")
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+    },
+    navBar:{
+        height:60,
+        width:'100%',
+        backgroundColor:COLORS.secondary,
+        borderTopWidth:1,
+        borderTopColor:COLORS.main,
+        elevation:12,
+        paddingHorizontal:10,
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'space-between',
+        paddingHorizontal:10
+    },
+    logo:{
+width:50,
+height:35,
+borderColor:COLORS.main,
+borderWidth:1,
+padding:1
+    },
+    profile:{
+        width:40,
+        height:40,
+        borderRadius:40,
+        borderColor:COLORS.main,
+        borderWidth:1,
+        padding:1
+    },
+    heading: {
+      fontSize: 18,
+      fontWeight: '600',
+      marginBottom: 5,
+      color:COLORS.main
+    },
+    pheading: {
+        fontSize: 16,
+        fontWeight: '600',
+        marginBottom: 10,
+        color:COLORS.main,
+        marginTop:5,
+      },
+    main:{
+        backgroundColor:'rgba(0,0,0,0.7)',
+        flex:1,
+      },
+      mainSection:{
+        backgroundColor:COLORS.main,
+        height: height-110,
+        paddingHorizontal:10,
+        width:width,
+      },
+      mainForm: {
+        backgroundColor: COLORS.secondary,
+        borderRadius: 5,
+        marginTop:20,
+        marginBottom:5,
+        padding:5,
+        paddingBottom:15,
+        width:width-30,
+        marginLeft:5,
+      },
+      image:{
+        width:'100%',
+        height:'60%',
+        borderRadius:5,
+      },
+      imageProfile:{
+        width:150,
+        height:150,
+        borderRadius:150,
+        borderWidth:2,
+        marginTop:50,
+        marginBottom:30,
+        borderColor:COLORS.main
+      },
+      label:{
+flexDirection:'row',
+margin:5,
+flexWrap:'wrap',
+marginLeft:20
+      },
+      profileManager:{
+justifyContent:'center',
+alignItems:'center',
+alignContent:'center'
+      },
+      tags:{
+marginTop:10,
+flexDirection:'row',
+flexWrap:'wrap',
+justifyContent:'space-around',
+      },
+      button:{
+        paddingVertical:15,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 12,
+        paddingHorizontal: 32,
+        borderRadius: 4,
+        elevation: 10,
+        fontSize:70,
+        fontWeight:'bold',
+        color:'white',
+        marginTop:30,
+        width:200,
+        alignSelf:'center',
+        backgroundColor: COLORS.secondary,
+        borderColor:COLORS.main,
+        borderWidth:1.5
+            },
+                section:{
+                  backgroundColor:COLORS.main,
+                  marginTop:40,
+                  borderTopEndRadius:50,
+                  borderTopLeftRadius:50,
+                  height: height-120,
+                  paddingHorizontal:10
+                },
+                form: {
+                  backgroundColor: COLORS.secondary,
+                  borderRadius: 10,
+                  paddingVertical: 45,
+                  paddingHorizontal: 25,
+                  marginTop:30,
+                  marginBottom:20,
+                  height: '70%'
+                },
+                title:{
+                  color:'white',
+                  marginTop:50,
+                  fontSize:32,
+                  fontWeight:'bold',
+                  textAlign:'center',
+                },
+
+                        main:{
+                          backgroundColor:'rgba(0,0,0,0.5)',
+                          flex:1,
+                        },
+                        form: {
+                          backgroundColor: COLORS.secondary,
+                          borderRadius: 10,
+                          paddingVertical: 45,
+                          paddingHorizontal: 25,
+                          marginVertical: 10,
+                          marginTop:40,
+                          height: '75%'
+                        },
+                        input:{
+                    marginBottom:15,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    paddingVertical: 10,
+                    paddingHorizontal: 20,
+                    borderRadius: 4,
+                    height:45,
+                    elevation: 6,
+                    fontSize:16,
+                    fontWeight:'bold',
+                    backgroundColor: COLORS.secondary,
+                        },
+  
+    }
+  
+  );
+  export default styles
