@@ -16,14 +16,21 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         alignItems:'center',
         justifyContent:'space-between',
-        paddingHorizontal:10
+        paddingHorizontal:10,
+
     },
     logo:{
-width:50,
-height:35,
-borderColor:COLORS.main,
-borderWidth:1,
-padding:1
+width:65,
+height:30,
+padding:1,
+fontSize:17,
+fontWeight:'bold',
+fontStyle:'italic',
+color:COLORS.main,
+borderBottomColor:COLORS.main,
+borderBottomWidth:7,
+paddingBottom:0
+
     },
     profile:{
         width:40,

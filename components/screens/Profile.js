@@ -1,4 +1,3 @@
-import CardSilder from 'react-native-cards-slider';
 import React from 'react'
 import { Image,Text,ScrollView, View,TouchableOpacity} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
@@ -9,12 +8,12 @@ const Profile = () => {
     return(
         <ScrollView>
         <View style={styles.navBar}>
-            <Image style={styles.logo} source={require('../../assets/images/logo.jpg')}/>
+        <Text style={styles.logo}>La Posh</Text>
         </View>
       <View style={styles.mainSection}>
       <View style={styles.mainForm}>
       <View style={styles.profileManager}>
-        <Image style={styles.imageProfile} source={require('../../assets/b1.jpg')} />
+        <Image style={styles.imageProfile} source={require('../../assets/images/profile.png')} />
         </View>
         <View style={styles.label}>
         <Ionicons name="md-person" size={26} color="black" />

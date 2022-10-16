@@ -1,4 +1,4 @@
-import CardSilder from 'react-native-cards-slider';
+
 import React from 'react'
 import { Image,Text,ScrollView, View, TouchableOpacity} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
@@ -9,7 +9,7 @@ const Details = () => {
     return(
         <ScrollView>
         <View style={styles.navBar}>
-            <Image style={styles.logo} source={require('../../assets/images/logo.jpg')}/>
+        <Text style={styles.logo}>La Posh</Text>
 <TouchableOpacity
 onPress={()=>navigation.navigate("Profile")}
 >
