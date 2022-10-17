@@ -2,11 +2,13 @@ import React from 'react'
 
 import { ImageBackground,StyleSheet, TextInput, Text, View, TouchableOpacity,Dimensions} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import Ionicons from '@expo/vector-icons/Ionicons';
 import styles from '../../assets/css/styles';
 const Login = () => {
    const navigation = useNavigation();
     return (
 <ImageBackground source={require('../../assets/b2.jpg')} style={styles.container}>
+
       <View style={styles.main}>
       <View style={styles.section}>
       <Text style={styles.title}>
@@ -29,13 +31,16 @@ const Login = () => {
         <Text style={styles.heading}>Login</Text>
       </TouchableOpacity>
       </View>
-      <View style={styles.nav}>
-<Text>Navigation</Text>
-<Text>Navigation</Text>
-<Text>Navigation</Text>
+      <TouchableOpacity
+      onPress={()=>navigation.navigate("Signup")}
+      >
+      <View style={styles.account}>
+      <Ionicons name="person-add" size={25} color='white'/>
+      <Text style={styles.cover}>Create Account</Text>
       </View>
+      </TouchableOpacity>
       </View>
-
+      
       </View>
       </ImageBackground>
     )

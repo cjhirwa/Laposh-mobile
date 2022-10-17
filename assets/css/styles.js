@@ -4,6 +4,19 @@ const {width,height}=Dimensions.get("window")
 const styles = StyleSheet.create({
     container: {
       flex: 1,
+      position:'relative'
+    },
+    account:{
+      height:60,
+      marginTop:30,
+      marginHorizontal:30,
+      flexDirection:'row',
+    },
+    cover:{
+color:COLORS.white,
+marginHorizontal:5,
+marginTop:1,
+fontSize:18
     },
     navBar:{
         height:60,
@@ -17,7 +30,10 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'space-between',
         paddingHorizontal:10,
-
+        position:'relative',
+        left:0,
+        right:0,
+        top:0
     },
     logo:{
 width:65,
@@ -59,7 +75,6 @@ paddingBottom:0
       },
       mainSection:{
         backgroundColor:COLORS.main,
-        height: height-110,
         paddingHorizontal:10,
         width:width,
       },
@@ -75,7 +90,7 @@ paddingBottom:0
       },
       image:{
         width:'100%',
-        height:'60%',
+        height:300,
         borderRadius:5,
       },
       imageProfile:{
@@ -124,11 +139,8 @@ justifyContent:'space-around',
             },
                 section:{
                   backgroundColor:COLORS.main,
-                  marginTop:40,
-                  borderTopEndRadius:50,
-                  borderTopLeftRadius:50,
-                  height: height-120,
-                  paddingHorizontal:10
+                  paddingHorizontal:10,
+                  height:height
                 },
                 form: {
                   backgroundColor: COLORS.secondary,
@@ -137,7 +149,6 @@ justifyContent:'space-around',
                   paddingHorizontal: 25,
                   marginTop:30,
                   marginBottom:20,
-                  height: '70%'
                 },
                 title:{
                   color:'white',
@@ -158,7 +169,6 @@ justifyContent:'space-around',
                           paddingHorizontal: 25,
                           marginVertical: 10,
                           marginTop:40,
-                          height: '75%'
                         },
                         input:{
                     marginBottom:15,

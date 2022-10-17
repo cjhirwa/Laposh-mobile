@@ -1,13 +1,14 @@
 
 import React from 'react'
-import { Image,Text, View,ScrollView, TouchableOpacity} from 'react-native'
+import { Image,Text, View,ScrollView, TouchableOpacity, SafeAreaView} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import styles from '../../assets/css/styles';
 const Home = () => {
     const navigation = useNavigation();
     return(
-    <ScrollView>
+      <SafeAreaView style={styles.container}>
+        <ScrollView >
         <View style={styles.navBar}>
         <Text style={styles.logo}>La Posh</Text>
 <TouchableOpacity
@@ -51,11 +52,8 @@ const Home = () => {
         </View>
         </View> 
       </View>
-      <View style={styles.navBar}>
-        <Ionicons name="md-home" size={32} color="black" onPress={()=>navigation.navigate("Home")} />
-        <Ionicons name="md-list" size={32} color="black" onPress={()=>navigation.navigate("Home")} />
-        </View>
-      </ScrollView>
+        </ScrollView>
+        </SafeAreaView>
     )
   }
 export default Home
