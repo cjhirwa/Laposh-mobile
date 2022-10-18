@@ -1,12 +1,14 @@
 import React from 'react'
 
-import { TextInput, Text, View, TouchableOpacity} from 'react-native'
+import { ImageBackground,StyleSheet, TextInput, Text, View, TouchableOpacity,Dimensions} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import styles from '../../assets/css/styles';
 const Login = () => {
    const navigation = useNavigation();
     return (
+<ImageBackground source={require('../../assets/b2.jpg')} style={styles.container}>
+
       <View style={styles.main}>
       <View style={styles.section}>
       <Text style={styles.title}>
@@ -38,7 +40,9 @@ const Login = () => {
       </View>
       </TouchableOpacity>
       </View>
+      
       </View>
+      </ImageBackground>
     )
 }
 export default Login

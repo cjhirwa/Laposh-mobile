@@ -4,6 +4,7 @@ import { Image,Text,ScrollView, View, TouchableOpacity} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import styles from '../../assets/css/styles';
+import COLORS from '../../assets/colors/colors';
 const Details = () => {
     const navigation = useNavigation();
     return(
@@ -16,20 +17,23 @@ onPress={()=>navigation.navigate("Profile")}
         <Image style={styles.profile} source={require('../../assets/images/profile.png')} />
         </TouchableOpacity>
         </View>
-      <View style={styles.mainSection}>
+      <View style={styles.section}>
       <View style={styles.mainForm}>
         <Image style={styles.image} source={require('../../assets/b1.jpg')} />
         <View style={styles.tags}>
             <Text style={styles.heading}>Standard</Text>
             <Text style={styles.heading}>Ocean View</Text>
             <Text style={styles.price} >700<Text>$</Text></Text>
+            
         </View>
-        
+        <Text style={styles.pheading}>
+        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum 
+        </Text>
+        <Text style={styles.additional}>
+        <Ionicons name="ios-wifi" size={28} color={COLORS.main} />
+        <Text>Free wifi</Text>
+        </Text>
         </View>
-        </View>
-        <View style={styles.navBar}>
-        <Ionicons name="md-home" size={32} color="black" onPress={()=>navigation.navigate("Home")} />
-        <Ionicons name="md-list" size={32} color="black" onPress={()=>navigation.navigate("Home")} />
         </View>
         </ScrollView>
     )}

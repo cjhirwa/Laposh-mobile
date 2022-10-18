@@ -10,34 +10,26 @@ const Profile = () => {
         <View style={styles.navBar}>
         <Text style={styles.logo}>La Posh</Text>
         </View>
-      <View style={styles.mainSection}>
+      <View style={styles.section}>
       <View style={styles.mainForm}>
       <View style={styles.profileManager}>
         <Image style={styles.imageProfile} source={require('../../assets/images/profile.png')} />
         </View>
         <View style={styles.label}>
-        <Ionicons name="md-person" size={26} color="black" />
+        <Ionicons name="person" size={26} color="black" />
             <Text style={styles.pheading}>HIRWA Jean Claude{'\n'}</Text>
             </View>
             <View style={styles.label}>
-            <Ionicons name="md-person" size={26} color="black" />
-            <Text style={styles.pheading}>HIRWA Jean Claude{'\n'}</Text>
-            </View>
-            <View style={styles.label}>
-            <Ionicons name="md-person" size={26} color="black" />
-            <Text style={styles.pheading}>HIRWA Jean Claude{'\n'}</Text>
+            <Ionicons name="md-mail" size={26} color="black" />
+            <Text style={styles.pheading}>hicode.io@gmail.com{'\n'}</Text>
         </View>
         <TouchableOpacity
         style={styles.button}
-        onPress={()=>navigation.navigate('Home')}
+        onPress={()=>navigation.navigate('HomeTab')}
       >
         <Text style={styles.heading}>Update Profile</Text>
       </TouchableOpacity>
         </View>
-        </View>
-        <View style={styles.navBar}>
-        <Ionicons name="md-home" size={32} color="black" onPress={()=>navigation.navigate("Home")} />
-        <Ionicons name="md-list" size={32} color="black" onPress={()=>navigation.navigate("Home")} />
         </View>
         </ScrollView>
     )}

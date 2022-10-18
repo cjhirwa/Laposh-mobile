@@ -1,24 +1,22 @@
 import React from "react";
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import { Entypo } from '@expo/vector-icons'; 
-import { FontAwesome } from '@expo/vector-icons'; 
 import Ionicons from '@expo/vector-icons/Ionicons';
-import Rooms from "../screens/Rooms"
+import Home from "../screens/Rooms"
 import Login from "../screens/Login";
 import Profile from "../screens/Profile";
 import  Settings  from "../screens/Profile";
-import History from "../screens/History";
 import COLORS from "../../assets/colors/colors";
 const Tab = createBottomTabNavigator()
-const HomeTab = () =>{
+const ProfileTab = () =>{
     return(
         <Tab.Navigator>
             <Tab.Screen 
-                name={'Rooms'}
-                component={Rooms}
+                name={'Home'}
+                component={Home}
                 options = {{
                     tabBarIcon : (color) =>(
-                        <FontAwesome name="list"  size={23} color={COLORS.main}/>
+                        <Ionicons name="home" size={23} color={COLORS.main}/>
                     ),
                     headerShown:false
                 }}
@@ -43,16 +41,6 @@ const HomeTab = () =>{
                     )
                 }}
             />
-
-            <Tab.Screen 
-                name={'History'}
-                component={History}
-                options = {{
-                    headerShown: false,
-                    tabBarIcon : (color) =>(
-            <FontAwesome name="history" size={24} color="black" />
-                    )}}
-            />
             <Tab.Screen 
                 name={'Settings'}
                 component={Settings}
@@ -66,5 +54,4 @@ const HomeTab = () =>{
         </Tab.Navigator>
     )
 }
-
-export default HomeTab
+export default ProfileTab

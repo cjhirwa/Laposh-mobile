@@ -1,5 +1,7 @@
 import React from 'react';
 import HomeTab from './components/navigations/HomeTab';
+import DetailsTab from './components/navigations/DetailsTab';
+import ProfileTab from './components/navigations/ProfileTab';
 import Signup from './components/screens/signup'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -12,6 +14,7 @@ export default function App() {
       <StatusBar barStyle = "dark-content" hidden = {false} backgroundColor = "#e0f4f1" color="white" translucent = {false}/>
 
       <Stack.Navigator>
+
       <Stack.Screen  name="HomeTab" component={HomeTab} 
         options={{  headerShown: false }}
       />
@@ -19,6 +22,13 @@ export default function App() {
       <Stack.Screen  name="Signup" component={Signup} 
         options={{  headerShown: false }}
       />
+      <Stack.Screen  name="DetailsTab" component={DetailsTab} 
+        options={{  headerShown: false }}
+      />
+      <Stack.Screen  name="ProfileTab" component={ProfileTab} 
+        options={{  headerShown: false }}
+      />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

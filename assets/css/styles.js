@@ -67,7 +67,8 @@ paddingBottom:0
         fontWeight: '600',
         marginBottom: 10,
         color:COLORS.main,
-        marginTop:5,
+        marginTop:2,
+        marginLeft:10
       },
     main:{
         backgroundColor:'rgba(0,0,0,0.7)',
@@ -87,6 +88,44 @@ paddingBottom:0
         paddingBottom:15,
         width:width-30,
         marginLeft:5,
+      },
+      History: {
+        backgroundColor: COLORS.secondary,
+        borderRadius: 5,
+        marginTop:40,
+        marginBottom:5,
+        padding:5,
+        paddingTop:0,
+        paddingBottom:15,
+        width:width-30,
+        marginLeft:5,
+      },
+      reference: {
+        backgroundColor: COLORS.main,
+        borderRadius: 5,
+        marginTop:-20,
+        padding:5,
+        paddingBottom:5,
+        width:width-90,
+        marginLeft:25,
+        borderColor:COLORS.secondary,
+        borderWidth:2,
+        color:COLORS.secondary,
+        fontSize:20,
+        fontWeight:'bold',
+        paddingVertical:5,
+        textAlign:'center',
+        paddingHorizontal:10
+      },
+      status:{
+        width:20,
+        height:20,
+        borderRadius:20
+      },
+      additional:{
+marginVertical:10,
+paddingHorizontal:10,
+color:COLORS.main
       },
       image:{
         width:'100%',
