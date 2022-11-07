@@ -4,13 +4,13 @@ import { Entypo } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons'; 
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Rooms from "../screens/Rooms"
-import Login from "../screens/Login";
 import Profile from "../screens/Profile";
+import Reserve from "../screens/Reserve";
 import Reservations from "../screens/Reservations";
-import Details from "../screens/Details";
+import Support from "../screens/Support";
 import COLORS from "../../assets/colors/colors";
-const Tab = createBottomTabNavigator()
-const DetailsTab = () =>{
+ const Tab = createBottomTabNavigator()
+const ReserveTab = () =>{
     return(
         <Tab.Navigator 
         screenOptions={{ 
@@ -28,11 +28,11 @@ const DetailsTab = () =>{
                 }}
             />
             <Tab.Screen 
-                name={'Details'}
-                component={Details}
+                name={'Reserve'}
+                component={Reserve}
                 options = {{
                     tabBarIcon : (color) =>(
-                        <FontAwesome name="details"  size={23} color={COLORS.main}/>
+                        <FontAwesome name="order"  size={23} color={COLORS.main}/>
                     ),
                     headerShown:false
                 }}
@@ -57,17 +57,7 @@ const DetailsTab = () =>{
                     headerShown:false
                 }}
             />
-             <Tab.Screen 
-                name={'Login'}
-                component={Login}
-                options = {{
-                    headerShown: false,
-                    tabBarIcon : (color) =>(
-                        <Entypo name="login" size={20} color={COLORS.main} />
-                    )
-                }}
-            />
-                        <Tab.Screen 
+            <Tab.Screen 
                 name={'Support'}
                 component={Support}
                 options = {{
@@ -81,4 +71,4 @@ const DetailsTab = () =>{
     )
 }
 
-export default DetailsTab
+export default ReserveTab

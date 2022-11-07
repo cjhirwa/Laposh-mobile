@@ -6,19 +6,23 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import Rooms from "../screens/Rooms"
 import Login from "../screens/Login";
 import Profile from "../screens/Profile";
-import  Settings  from "../screens/Profile";
-import History from "../screens/History";
+import Reservations from "../screens/Reservations";
+import Support from "../screens/Support";
 import COLORS from "../../assets/colors/colors";
-const Tab = createBottomTabNavigator()
+ const Tab = createBottomTabNavigator()
 const HomeTab = () =>{
     return(
-        <Tab.Navigator>
+        <Tab.Navigator 
+        screenOptions={{ 
+            tabBarActiveTintColor: COLORS.main, tabBarInactiveTintColor: COLORS.grey, tabBarShowLabel: true, 
+            tabBarStyle: { paddingVertical: Platform.OS === 'ios' ? 20 : 0, height: 58, backgroundColor: COLORS.white } }}
+        >
             <Tab.Screen 
-                name={'Rooms'}
+                name={'Home'}
                 component={Rooms}
                 options = {{
                     tabBarIcon : (color) =>(
-                        <FontAwesome name="list"  size={23} color={COLORS.main}/>
+                        <FontAwesome name="home"  size={23} color={COLORS.main}/>
                     ),
                     headerShown:false
                 }}
@@ -28,7 +32,17 @@ const HomeTab = () =>{
                 component={Profile}
                 options = {{
                     tabBarIcon : (color) =>(
-                        <Ionicons name="person" size={23} color={COLORS.main}/>
+                        <Ionicons name="person" size={20} color={COLORS.main}/>
+                    ),
+                    headerShown:false
+                }}
+            />
+            <Tab.Screen 
+                name={'Reservations'}
+                component={Reservations}
+                options = {{
+                    tabBarIcon : (color) =>(
+                        <Ionicons name="history" size={20} color={COLORS.main}/>
                     ),
                     headerShown:false
                 }}
@@ -39,27 +53,17 @@ const HomeTab = () =>{
                 options = {{
                     headerShown: false,
                     tabBarIcon : (color) =>(
-                        <Entypo name="login" size={24} color={COLORS.main} />
+                        <Entypo name="login" size={20} color={COLORS.main} />
                     )
                 }}
             />
-
-            <Tab.Screen 
-                name={'History'}
-                component={History}
+                        <Tab.Screen 
+                name={'Support'}
+                component={Support}
                 options = {{
                     headerShown: false,
                     tabBarIcon : (color) =>(
-            <FontAwesome name="history" size={24} color="black" />
-                    )}}
-            />
-            <Tab.Screen 
-                name={'Settings'}
-                component={Settings}
-                options = {{
-                    headerShown: false,
-                    tabBarIcon : (color) =>(
-                        <Ionicons name="settings" size={24} color={COLORS.main} />
+                        <Entypo name="call" size={20} color={COLORS.main} />
                     )
                 }}
             />

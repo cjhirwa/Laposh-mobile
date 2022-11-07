@@ -8,7 +8,7 @@ const Profile = () => {
     return(
         <ScrollView>
         <View style={styles.navBar}>
-        <Text style={styles.logo}>La Posh</Text>
+        <Text style={styles.logo}>La Posh hotel</Text>
         </View>
       <View style={styles.section}>
       <View style={styles.mainForm}>
@@ -23,12 +23,6 @@ const Profile = () => {
             <Ionicons name="md-mail" size={26} color="black" />
             <Text style={styles.pheading}>hicode.io@gmail.com{'\n'}</Text>
         </View>
-        <TouchableOpacity
-        style={styles.button}
-        onPress={()=>navigation.navigate('HomeTab')}
-      >
-        <Text style={styles.heading}>Update Profile</Text>
-      </TouchableOpacity>
         </View>
         </View>
         </ScrollView>

@@ -3,7 +3,7 @@ import React from 'react'
 import { TextInput, Text, View, TouchableOpacity} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import styles from '../../assets/css/styles';
-const Login = () => {
+const Reserve = () => {
    const navigation = useNavigation();
     return (
       <View style={styles.main}>
@@ -13,40 +13,35 @@ const Login = () => {
           </Text>
           <View style={styles.line}/>
           <Text style={styles.subtitle}>
-            Login
+            Booking information
           </Text> 
       <View style={[styles.loginForm, styles.elevation]}>
-      <Text style={styles.heading}>Username</Text>
+      <Text style={styles.heading}>Check-in-Date</Text>
+          <TextInput 
+          style={styles.input}
+          />
+      <Text style={styles.heading}>Check-out-Date</Text>
+          <TextInput 
+          style={styles.input}
+          />
+      <Text style={styles.heading}>Room</Text>
           <TextInput 
           style={styles.input}
           />
       <Text style={styles.heading}>
-            Password
+            Special information
           </Text>
-          <TextInput secureTextEntry={true} style={styles.input}>
+          <TextInput style={styles.input}>
           </TextInput>
           <TouchableOpacity
         style={styles.button}
-        onPress={()=>navigation.navigate('Home')}
+        // onPress={()=>navigation.navigate('Home')}
       >
-      <Text style={styles.heading}>Login</Text>
+      <Text style={styles.heading}>Send</Text>
       </TouchableOpacity>
-
-      <View style={styles.line}/>
-      <Text style={styles.cover}>Forgot Password?</Text>
-      </View>
-      <View style={styles.miniForm}>
-      <View style={styles.account}>
-      <Text style={styles.pheading}>Don't have an account?</Text>
-      <TouchableOpacity
-      onPress={()=>navigation.navigate("Signup")}
-      >
-      <Text style={styles.signup}>Sign up</Text>
-      </TouchableOpacity>
-      </View>
-      </View>
+</View>
       </View>
       </View>
     )
 }
-export default Login
+export default Reserve

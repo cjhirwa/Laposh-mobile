@@ -6,11 +6,12 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import Rooms from "../screens/Rooms"
 import Login from "../screens/Login";
 import Profile from "../screens/Profile";
+import List from "../screens/list";
 import Reservations from "../screens/Reservations";
-import Details from "../screens/Details";
+import Support from "../screens/Support";
 import COLORS from "../../assets/colors/colors";
-const Tab = createBottomTabNavigator()
-const DetailsTab = () =>{
+ const Tab = createBottomTabNavigator()
+const ListTab = () =>{
     return(
         <Tab.Navigator 
         screenOptions={{ 
@@ -28,11 +29,11 @@ const DetailsTab = () =>{
                 }}
             />
             <Tab.Screen 
-                name={'Details'}
-                component={Details}
+                name={'List'}
+                component={List}
                 options = {{
                     tabBarIcon : (color) =>(
-                        <FontAwesome name="details"  size={23} color={COLORS.main}/>
+                        <FontAwesome name="list"  size={23} color={COLORS.main}/>
                     ),
                     headerShown:false
                 }}
@@ -67,7 +68,7 @@ const DetailsTab = () =>{
                     )
                 }}
             />
-                        <Tab.Screen 
+            <Tab.Screen 
                 name={'Support'}
                 component={Support}
                 options = {{
@@ -81,4 +82,4 @@ const DetailsTab = () =>{
     )
 }
 
-export default DetailsTab
+export default ListTab

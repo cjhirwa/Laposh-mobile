@@ -1,7 +1,7 @@
 
-import React from 'react'
-import { Image,Text,ScrollView, View, TouchableOpacity} from 'react-native'
-import { useNavigation } from '@react-navigation/native'
+import React from 'react';
+import { Image,Text,ScrollView, View, TouchableOpacity} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import styles from '../../assets/css/styles';
 import COLORS from '../../assets/colors/colors';
@@ -14,11 +14,13 @@ const Details = () => {
 <TouchableOpacity
 onPress={()=>navigation.navigate("Profile")}
 >
+
         <Image style={styles.profile} source={require('../../assets/images/profile.png')} />
         </TouchableOpacity>
         </View>
       <View style={styles.section}>
       <View style={styles.mainForm}>
+      
         <Image style={styles.image} source={require('../../assets/b1.jpg')} />
         <View style={styles.tags}>
             <Text style={styles.heading}>Standard</Text>

@@ -13,11 +13,24 @@ const styles = StyleSheet.create({
       flexDirection:'row',
     },
     cover:{
-color:COLORS.white,
+color:COLORS.main,
 marginHorizontal:5,
 marginTop:1,
-fontSize:18
+textAlign:'center',
+fontSize:18,
+fontWeight: '600',
+marginTop:10
     },
+    tab:{
+      backgroundColor:COLORS.main
+    },
+    signup:{
+      color:'#0083A3',
+      marginHorizontal:5,
+      marginTop:1,
+      fontWeight:'bold',
+      fontSize:18
+          },
     navBar:{
         height:60,
         width:'100%',
@@ -174,7 +187,8 @@ justifyContent:'space-around',
         alignSelf:'center',
         backgroundColor: COLORS.secondary,
         borderColor:COLORS.main,
-        borderWidth:1.5
+        borderWidth:2,
+        borderRadius:20
             },
                 section:{
                   backgroundColor:COLORS.main,
@@ -189,10 +203,34 @@ justifyContent:'space-around',
                   marginTop:30,
                   marginBottom:20,
                 },
+                loginForm: {
+                  backgroundColor: COLORS.secondary,
+                  paddingVertical: 45,
+                  paddingHorizontal: 25,
+                  marginTop:30,
+                },
+                miniForm: {
+                  backgroundColor: COLORS.secondary,
+                  paddingVertical: 5,
+                  paddingHorizontal: 10,
+                  marginTop:5,
+                },
+                line:{
+                  marginTop:30,
+                  borderBottomColor: COLORS.grey,
+                  borderBottomWidth: 1,
+                },
                 title:{
                   color:'white',
                   marginTop:50,
                   fontSize:32,
+                  fontWeight:'bold',
+                  textAlign:'center',
+                },
+                subtitle:{
+                  color:'white',
+                  marginTop:50,
+                  fontSize:24,
                   fontWeight:'bold',
                   textAlign:'center',
                 },
