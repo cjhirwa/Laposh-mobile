@@ -1,6 +1,5 @@
 import React from 'react';
 import HomeTab from './components/navigations/HomeTab';
-import DetailsTab from './components/navigations/DetailsTab';
 import ListTab from './components/navigations/ListTab';
 import ReserveTab from './components/navigations/ReserveTab';
 import Signup from './components/screens/signup';
@@ -20,9 +19,6 @@ export default function App() {
       <Stack.Screen  name="HomeTab" component={HomeTab} 
         options={{  headerShown: false }}
       /> 
-      <Stack.Screen  name="DetailsTab" component={DetailsTab} 
-        options={{  headerShown: false }}
-      />
       <Stack.Screen  name="ListTab" component={ListTab} 
         options={{  headerShown: false }}
       />

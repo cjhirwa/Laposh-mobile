@@ -37,22 +37,23 @@ const ReserveTab = () =>{
                     headerShown:false
                 }}
             />
-            <Tab.Screen 
-                name={'Profile'}
-                component={Profile}
-                options = {{
-                    tabBarIcon : (color) =>(
-                        <Ionicons name="person" size={20} color={COLORS.main}/>
-                    ),
-                    headerShown:false
-                }}
-            />
+
             <Tab.Screen 
                 name={'Reservations'}
                 component={Reservations}
                 options = {{
                     tabBarIcon : (color) =>(
                         <Ionicons name="history" size={20} color={COLORS.main}/>
+                    ),
+                    headerShown:false
+                }}
+            />
+            <Tab.Screen 
+                name={'Profile'}
+                component={Profile}
+                options = {{
+                    tabBarIcon : (color) =>(
+                        <Ionicons name="person" size={20} color={COLORS.main}/>
                     ),
                     headerShown:false
                 }}

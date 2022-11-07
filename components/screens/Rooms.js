@@ -8,7 +8,7 @@ const Rooms = () => {
       <SafeAreaView style={styles.container}>
         <ScrollView>
         <View style={styles.navBar}>
-        <Text style={styles.logo}>La Posh</Text>
+        <Text style={styles.logo}>La Posh hotel</Text>
         </View>
       <View style={styles.mainSection}>
       <View style={styles.mainForm}>

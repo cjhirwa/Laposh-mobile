@@ -2,10 +2,12 @@ import React from "react";
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import { Entypo } from '@expo/vector-icons'; 
 import { FontAwesome } from '@expo/vector-icons'; 
+import { MaterialIcons } from '@expo/vector-icons'; 
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Rooms from "../screens/Rooms"
 import Login from "../screens/Login";
 import Profile from "../screens/Profile";
+import Details from "../screens/Details";
 import Reservations from "../screens/Reservations";
 import Support from "../screens/Support";
 import COLORS from "../../assets/colors/colors";
@@ -14,8 +16,8 @@ const HomeTab = () =>{
     return(
         <Tab.Navigator 
         screenOptions={{ 
-            tabBarActiveTintColor: COLORS.main, tabBarInactiveTintColor: COLORS.grey, tabBarShowLabel: true, 
-            tabBarStyle: { paddingVertical: Platform.OS === 'ios' ? 20 : 0, height: 58, backgroundColor: COLORS.white } }}
+            tabBarActiveTintColor: COLORS.blue, tabBarInactiveTintColor: COLORS.grey, tabBarShowLabel: true, 
+            tabBarStyle: { paddingVertical: Platform.OS === 'ios' ? 20 : 0, height: 50, backgroundColor: COLORS.white } }}
         >
             <Tab.Screen 
                 name={'Home'}
@@ -27,12 +29,12 @@ const HomeTab = () =>{
                     headerShown:false
                 }}
             />
-            <Tab.Screen 
-                name={'Profile'}
-                component={Profile}
+                        <Tab.Screen 
+                name={'Details'}
+                component={Details}
                 options = {{
                     tabBarIcon : (color) =>(
-                        <Ionicons name="person" size={20} color={COLORS.main}/>
+                        <Ionicons name="bed-outline" size={24} color={COLORS.main}/>
                     ),
                     headerShown:false
                 }}
@@ -42,7 +44,17 @@ const HomeTab = () =>{
                 component={Reservations}
                 options = {{
                     tabBarIcon : (color) =>(
-                        <Ionicons name="history" size={20} color={COLORS.main}/>
+                        <FontAwesome name="history" size={24} color={COLORS.main}/>
+                    ),
+                    headerShown:false
+                }}
+            />
+            <Tab.Screen 
+                name={'Profile'}
+                component={Profile}
+                options = {{
+                    tabBarIcon : (color) =>(
+                        <Ionicons name="person" size={20} color={COLORS.main}/>
                     ),
                     headerShown:false
                 }}
@@ -63,7 +75,7 @@ const HomeTab = () =>{
                 options = {{
                     headerShown: false,
                     tabBarIcon : (color) =>(
-                        <Entypo name="call" size={20} color={COLORS.main} />
+                        <MaterialIcons name="support-agent" size={24} color={COLORS.main} />
                     )
                 }}
             />

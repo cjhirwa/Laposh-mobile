@@ -10,6 +10,7 @@ const Support = () => {
       <Text style={styles.title}>
             La posh Hotel
           </Text>
+          <View style={styles.line}/>
       <Text style={styles.subtitle}>
             Support Request
           </Text>
@@ -33,6 +34,8 @@ const Support = () => {
       <Text style={styles.heading}>Describe your Problem</Text>
           <TextInput 
           style={styles.input}
+          multiline
+        numberOfLines={15}
           />
       </KeyboardAvoidingView>
       <TouchableOpacity

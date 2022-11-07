@@ -49,15 +49,13 @@ marginTop:10
         top:0
     },
     logo:{
-width:65,
+width:120,
 height:30,
 padding:1,
 fontSize:17,
 fontWeight:'bold',
 fontStyle:'italic',
 color:COLORS.main,
-borderBottomColor:COLORS.main,
-borderBottomWidth:7,
 paddingBottom:0
 
     },
@@ -193,17 +191,19 @@ justifyContent:'space-around',
                 section:{
                   backgroundColor:COLORS.main,
                   paddingHorizontal:10,
-                  height:height
+                  minHeight:height
+                  
                 },
                 form: {
                   backgroundColor: COLORS.secondary,
-                  borderRadius: 10,
+                  borderRadius: 5,
                   paddingVertical: 45,
                   paddingHorizontal: 25,
                   marginTop:30,
                   marginBottom:20,
                 },
                 loginForm: {
+                  borderRadius: 5,
                   backgroundColor: COLORS.secondary,
                   paddingVertical: 45,
                   paddingHorizontal: 25,
@@ -222,14 +222,13 @@ justifyContent:'space-around',
                 },
                 title:{
                   color:'white',
-                  marginTop:50,
+                  marginTop:20,
                   fontSize:32,
-                  fontWeight:'bold',
                   textAlign:'center',
                 },
                 subtitle:{
                   color:'white',
-                  marginTop:50,
+                  marginTop:10,
                   fontSize:24,
                   fontWeight:'bold',
                   textAlign:'center',
@@ -241,11 +240,11 @@ justifyContent:'space-around',
                         },
                         form: {
                           backgroundColor: COLORS.secondary,
-                          borderRadius: 10,
+                          borderRadius: 5,
                           paddingVertical: 45,
                           paddingHorizontal: 25,
                           marginVertical: 10,
-                          marginTop:40,
+                          marginTop:30,
                         },
                         input:{
                     marginBottom:15,

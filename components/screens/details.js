@@ -10,13 +10,7 @@ const Details = () => {
     return(
         <ScrollView>
         <View style={styles.navBar}>
-        <Text style={styles.logo}>La Posh</Text>
-<TouchableOpacity
-onPress={()=>navigation.navigate("Profile")}
->
-
-        <Image style={styles.profile} source={require('../../assets/images/profile.png')} />
-        </TouchableOpacity>
+        <Text style={styles.logo}>La Posh hotel</Text>
         </View>
       <View style={styles.section}>
       <View style={styles.mainForm}>

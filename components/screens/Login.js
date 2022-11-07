@@ -1,11 +1,12 @@
 import React from 'react'
 
-import { TextInput, Text, View, TouchableOpacity} from 'react-native'
+import { TextInput, Text, ScrollView,View, TouchableOpacity} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import styles from '../../assets/css/styles';
 const Login = () => {
    const navigation = useNavigation();
     return (
+      <ScrollView style={styles.container}>
       <View style={styles.main}>
       <View style={styles.section}>
       <Text style={styles.title}>
@@ -47,6 +48,7 @@ const Login = () => {
       </View>
       </View>
       </View>
+      </ScrollView>
     )
 }
 export default Login

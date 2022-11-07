@@ -1,34 +1,37 @@
 import React from 'react'
-import { ImageBackground,TextInput,ScrollView, Text, View, KeyboardAvoidingView,TouchableOpacity } from 'react-native'
+import { TextInput,ScrollView, Text, View, KeyboardAvoidingView,TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import styles from '../../assets/css/styles';
 const Signup = () => {
     const navigation = useNavigation();
     return (
-      <ScrollView style={styles.main}>
+      <ScrollView style={styles.container}>
+      <View style={styles.main}>
       <View style={styles.section}>
       <Text style={styles.title}>
             La posh Hotel
           </Text>
+          <View style={styles.line}/>
       <Text style={styles.subtitle}>
             Create Account
           </Text>
       <View style={[styles.form, styles.elevation]}>
-      <Text style={styles.heading}>First name</Text>
+      <Text style={styles.heading}>First Name</Text>
           <TextInput 
           style={styles.input}
           />
-      <Text style={styles.heading}>Last name</Text>
-          <TextInput 
-          style={styles.input}
-          />
-    <KeyboardAvoidingView
-        behavior={Platform.OS == "ios" ? "padding" : "height"}
-      >
+      <Text style={styles.heading}>Last Name</Text>
+        <TextInput 
+        style={styles.input}
+        />
+
       <Text style={styles.heading}>Email</Text>
           <TextInput 
           style={styles.input}
           />
+      <KeyboardAvoidingView
+        behavior={Platform.OS == "ios" ? "padding" : "height"}
+      >
       <Text style={styles.heading}>
             Password
           </Text>
@@ -41,7 +44,7 @@ const Signup = () => {
           </TextInput>
           <TouchableOpacity
         style={styles.button}
-        onPress={()=>navigation.navigate('Login')}
+        onPress={()=>navigation.navigate('CompleteProfile')}
       >
         <Text style={styles.heading}>Register</Text>
       </TouchableOpacity>
@@ -50,6 +53,7 @@ const Signup = () => {
       </View>
       <View style={styles.nav}>
 
+      </View>
       </View>
       </ScrollView>
     )

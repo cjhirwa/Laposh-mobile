@@ -6,7 +6,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import Rooms from "../screens/Rooms"
 import Login from "../screens/Login";
 import Profile from "../screens/Profile";
-import List from "../screens/list";
+import List from "../screens/List";
 import Reservations from "../screens/Reservations";
 import Support from "../screens/Support";
 import COLORS from "../../assets/colors/colors";
@@ -39,21 +39,21 @@ const ListTab = () =>{
                 }}
             />
             <Tab.Screen 
-                name={'Profile'}
-                component={Profile}
-                options = {{
-                    tabBarIcon : (color) =>(
-                        <Ionicons name="person" size={20} color={COLORS.main}/>
-                    ),
-                    headerShown:false
-                }}
-            />
-            <Tab.Screen 
                 name={'Reservations'}
                 component={Reservations}
                 options = {{
                     tabBarIcon : (color) =>(
                         <Ionicons name="history" size={20} color={COLORS.main}/>
+                    ),
+                    headerShown:false
+                }}
+            />
+                        <Tab.Screen 
+                name={'Profile'}
+                component={Profile}
+                options = {{
+                    tabBarIcon : (color) =>(
+                        <Ionicons name="person" size={20} color={COLORS.main}/>
                     ),
                     headerShown:false
                 }}
