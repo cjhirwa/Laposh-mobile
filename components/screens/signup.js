@@ -32,16 +32,6 @@ const Signup = () => {
       <KeyboardAvoidingView
         behavior={Platform.OS == "ios" ? "padding" : "height"}
       >
-      <Text style={styles.heading}>
-            Password
-          </Text>
-          <TextInput secureTextEntry={true} style={styles.input}>
-          </TextInput>
-          <Text style={styles.heading}>
-            Confirm Password
-          </Text>
-          <TextInput secureTextEntry={true} style={styles.input}>
-          </TextInput>
           <TouchableOpacity
         style={styles.button}
         onPress={()=>navigation.navigate('CompleteProfile')}
@@ -50,9 +40,17 @@ const Signup = () => {
       </TouchableOpacity>
       </KeyboardAvoidingView>
       </View>
+     
+      <View style={styles.miniForm}>
+      <View style={styles.account}>
+      <Text style={styles.pheading}>Already have an account?</Text>
+      <TouchableOpacity
+      onPress={()=>navigation.navigate("Login")}
+      >
+      <Text style={styles.signup}>Login</Text>
+      </TouchableOpacity>
       </View>
-      <View style={styles.nav}>
-
+      </View>
       </View>
       </View>
       </ScrollView>
