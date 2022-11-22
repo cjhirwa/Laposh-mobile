@@ -59,12 +59,12 @@ const Login = () => {
             { cancelable: false}
           )
         }
-        else if(response.json().logins==0){
-          navigation.navigate('Reserve')
-        }
-        else{
-          navigation.navigate('Home')
-        }
+        // else if(response.json().logins==0){
+        //   navigation.navigate('Reserve')
+        // }
+        // else{
+        //   navigation.navigate('Home')
+        // }
           }
           catch(e){
 console.log(e)
