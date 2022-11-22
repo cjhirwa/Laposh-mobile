@@ -40,7 +40,7 @@ const Signup = () => {
       </TouchableOpacity>
       </KeyboardAvoidingView>
       </View>
-     
+     {/* jkmkm */}
       <View style={styles.miniForm}>
       <View style={styles.account}>
       <Text style={styles.pheading}>Already have an account?</Text>
