@@ -6,6 +6,13 @@ const styles = StyleSheet.create({
       flex: 1,
       position:'relative'
     },
+    activityIndicator: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: 300,
+      backgroundColor:COLORS.light
+   },
     account:{
       height:60,
       marginTop:30,

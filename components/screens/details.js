@@ -5,7 +5,26 @@ import { useNavigation } from '@react-navigation/native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import styles from '../../assets/css/styles';
 import COLORS from '../../assets/colors/colors';
-const Details = () => {
+const Details = ({route}) => {
+    const [isLoading,setLoading]=useState(true);
+    const [name,setName]=useState('');
+    const [specifications,setSpecifications]=useState('');
+    const [price,setPrice]=useState('');
+    const [image,setImage]=useState('');
+    const getRoom=async (id)=>{
+        try{
+      const response=await fetch('https://reservation-h7rxq6cut-hicode-byte.vercel.app/room/'+id);
+      const data=await response.json();
+      setName(data.name)
+      setSpecifications(data.specifications)
+      setPrice(data.price)
+      setImage(data.price)
+      setLoading(false)
+        }
+        catch(e){
+        }
+      }
+      useEffect(()=>{getRoom(route.params.rid)},[])
     const navigation = useNavigation();
     return(
         <ScrollView>
@@ -13,23 +32,27 @@ const Details = () => {
         <Text style={styles.logo}>La Posh hotel</Text>
         </View>
       <View style={styles.section}>
+      {isLoading?<ActivityIndicator style={styles.activityIndicator}
+size="large" color="#00ff00"
+      />:(
       <View style={styles.mainForm}>
       
-        <Image style={styles.image} source={require('../../assets/b1.jpg')} />
+        <Image style={styles.image} source={{uri: image}} />
         <View style={styles.tags}>
-            <Text style={styles.heading}>Standard</Text>
-            <Text style={styles.heading}>Ocean View</Text>
-            <Text style={styles.price} >700<Text>$</Text></Text>
+            <Text style={styles.heading}>{name}</Text>
+            <Text style={styles.heading}>{specifications}</Text>
+            <Text style={styles.price} >{price}<Text>$</Text></Text>
             
         </View>
         <Text style={styles.pheading}>
-        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum 
+        {specifications}
         </Text>
         <Text style={styles.additional}>
         <Ionicons name="ios-wifi" size={28} color={COLORS.main} />
         <Text>Free wifi</Text>
         </Text>
         </View>
+      )}
         </View>
         </ScrollView>
     )}
