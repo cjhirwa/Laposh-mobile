@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {useState} from 'react'
 
-import { TextInput, Text, ScrollView,View, TouchableOpacity,ActivityIndicator} from 'react-native'
+import { TextInput, Text, ScrollView,View, TouchableOpacity,ActivityIndicator,Alert} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import styles from '../../assets/css/styles';
 const Login = () => {
@@ -8,7 +8,7 @@ const Login = () => {
    const [password,setPassword]=useState('');
     const [email,setEmail]=useState('');
     const [isLoading,setLoading]=useState(false);
-    const Singin=async()=>{
+    const Signin=async()=>{
       if(email=="" || email==""){
         Alert.alert(
           'Warning',
@@ -17,7 +17,7 @@ const Login = () => {
             {
               text: 'Ok',
               onPress: () =>{
-                navigation.navigate('Signup')
+                navigation.navigate('Login')
             }
             },
           ],
@@ -26,41 +26,50 @@ const Login = () => {
       }
       else{
         setLoading(true)
-  const response = await fetch('https://reservation-h7rxq6cut-hicode-byte.vercel.app/customer/login',
-  {
-    method:'POST',
-    headers:{
-      Accept:'application/json',
-      'Content-Type':'application/json'
-    },
-    body:JSON.stringify({
-      email:email,
-      password:password
-    })
-  })
-  if(response.error){
-    setLoading(false)
-    Alert.alert(
-      'Error',
-      'Invalid credentials',
-      [
+        try{
+        const response = await fetch('https://reservation-h7rxq6cut-hicode-byte.vercel.app/customer/login',
         {
-          text: 'Ok',
-          onPress: () =>{
-            navigation.navigate('Login')
+          method:'POST',
+          headers:{
+            'accept':'application/json',
+            'Content-Type':'application/json'
+          },
+          body:JSON.stringify({
+            email:email,
+            password:password
+          })
+        })
+        const data=response.json();
+        console.log(data)
+        setLoading(false)
+      
+        if(response.json().error){
+          
+          Alert.alert(
+            'Error',
+            'Invalid credentials',
+            [
+              {
+                text: 'Ok',
+                onPress: () =>{
+                  navigation.navigate('Login')
+              }
+              },
+            ],
+            { cancelable: false}
+          )
         }
-        },
-      ],
-      { cancelable: false}
-    )
-  }
-  else if(response.logins==0){
-    navigation.navigate('Reserve')
-  }
-  else{
-    navigation.navigate('Home')
-  }
-     }}
+        else if(response.json().logins==0){
+          navigation.navigate('Reserve')
+        }
+        else{
+          navigation.navigate('Home')
+        }
+          }
+          catch(e){
+console.log(e)
+          }
+        }}
     return (
       <ScrollView style={styles.container}>
       <View style={styles.main}>
@@ -94,7 +103,7 @@ const Login = () => {
           </TextInput>
           <TouchableOpacity
         style={styles.button}
-        onPress={()=>Singin()}
+        onPress={()=>Signin()}
       >
       <Text style={styles.heading}>Login</Text>
       </TouchableOpacity>

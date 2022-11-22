@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       height: 300,
-      backgroundColor:COLORS.light
+      backgroundColor:COLORS.main
    },
     account:{
       height:60,

@@ -1,6 +1,6 @@
 
-import React from 'react';
-import { Image,Text,ScrollView, View, TouchableOpacity} from 'react-native';
+import React ,{useState, useEffect}from 'react';
+import { Image,Text,ScrollView, View, TouchableOpacity,ActivityIndicator} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import styles from '../../assets/css/styles';
@@ -18,7 +18,7 @@ const Details = ({route}) => {
       setName(data.name)
       setSpecifications(data.specifications)
       setPrice(data.price)
-      setImage(data.price)
+      setImage(data.image)
       setLoading(false)
         }
         catch(e){
@@ -51,6 +51,14 @@ size="large" color="#00ff00"
         <Ionicons name="ios-wifi" size={28} color={COLORS.main} />
         <Text>Free wifi</Text>
         </Text>
+        <View>
+        <TouchableOpacity
+            style={styles.button}
+            onPress={()=>navigation.navigate("Home")}
+        >
+        <Text>Check Details</Text>
+        </TouchableOpacity>
+        </View>
         </View>
       )}
         </View>
