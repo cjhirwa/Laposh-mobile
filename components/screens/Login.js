@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-
 import { TextInput, Text, ScrollView,View, TouchableOpacity,ActivityIndicator,Alert} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import styles from '../../assets/css/styles';
@@ -27,27 +26,21 @@ const Login = () => {
       else{
         setLoading(true)
         try{
-        const response = await fetch('https://reservation-h7rxq6cut-hicode-byte.vercel.app/customer/login',
-        {
-          method:'POST',
-          headers:{
-            'accept':'application/json',
-            'Content-Type':'application/json'
-          },
-          body:JSON.stringify({
+          const customer = JSON.stringify({
             email:email,
             password:password
-          })
-        })
-        const data=response.json();
-        console.log(data)
+          });
+          const config = {
+              headers: {
+              'Content-Type': 'application/json'
+              }
+                };
+      const response = await axios.post('https://reservation-zeta.vercel.app/customer/login', customer, config);
+      if(response.data.error){
         setLoading(false)
-      
-        if(response.json().error){
-          
           Alert.alert(
             'Error',
-            'Invalid credentials',
+            `${response.data.error}`,
             [
               {
                 text: 'Ok',
@@ -59,12 +52,11 @@ const Login = () => {
             { cancelable: false}
           )
         }
-        // else if(response.json().logins==0){
-        //   navigation.navigate('Reserve')
-        // }
-        // else{
-        //   navigation.navigate('Home')
-        // }
+        else{
+          setLoading(false)
+          await AsyncStorage.setItem('token',response.data.token);
+          navigation.navigate('Home') 
+        }
           }
           catch(e){
 console.log(e)

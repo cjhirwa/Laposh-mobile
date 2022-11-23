@@ -4,7 +4,7 @@ import { Image,Text, View, TouchableOpacity, SafeAreaView,ActivityIndicator,Flat
 import { useNavigation } from '@react-navigation/native'
 import styles from '../../assets/css/styles';
 const Rooms = () => {
-const url='https://reservation-h7rxq6cut-hicode-byte.vercel.app/rooms';
+const url='https://reservation-zeta.vercel.app/rooms';
 let [rooms,setRooms]=useState([]);
 const [isLoading,setLoading]=useState(true);
 

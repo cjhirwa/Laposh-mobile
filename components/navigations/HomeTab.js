@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import { Entypo } from '@expo/vector-icons'; 
 import { FontAwesome } from '@expo/vector-icons'; 
@@ -7,12 +7,21 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import Rooms from "../screens/Rooms"
 import Login from "../screens/Login";
 import Profile from "../screens/Profile";
-import Details from "../screens/Details";
 import Reservations from "../screens/Reservations";
 import Support from "../screens/Support";
 import COLORS from "../../assets/colors/colors";
  const Tab = createBottomTabNavigator()
 const HomeTab = () =>{
+
+    
+    const [isLoggedIn,setLoggedIn]=useState(false)
+    const checkLogin=async()=>{
+        const token = await AsyncStorage.getItem('token');
+        if(token){
+            setLoggedIn(true)
+        }
+    }
+    useEffect(()=>{checkLogin()});
     return(
         <Tab.Navigator 
         screenOptions={{ 
@@ -29,16 +38,7 @@ const HomeTab = () =>{
                     headerShown:false
                 }}
             />
-                        <Tab.Screen 
-                name={'Details'}
-                component={Details}
-                options = {{
-                    tabBarIcon : (color) =>(
-                        <Ionicons name="bed-outline" size={24} color={COLORS.main}/>
-                    ),
-                    headerShown:false
-                }}
-            />
+
             <Tab.Screen 
                 name={'Reservations'}
                 component={Reservations}
@@ -49,6 +49,7 @@ const HomeTab = () =>{
                     headerShown:false
                 }}
             />
+            {isLoggedIn?
             <Tab.Screen 
                 name={'Profile'}
                 component={Profile}
@@ -58,7 +59,8 @@ const HomeTab = () =>{
                     ),
                     headerShown:false
                 }}
-            />
+            />:
+            
              <Tab.Screen 
                 name={'Login'}
                 component={Login}
@@ -69,6 +71,7 @@ const HomeTab = () =>{
                     )
                 }}
             />
+            }
                         <Tab.Screen 
                 name={'Support'}
                 component={Support}

@@ -1,5 +1,6 @@
-import React from 'react'
-import { TextInput,ScrollView, Text, View, KeyboardAvoidingView,TouchableOpacity,ActivityIndicator } from 'react-native'
+import React, {useState} from 'react'
+import axios from 'axios';
+import { TextInput,ScrollView, Text, View, KeyboardAvoidingView,TouchableOpacity,ActivityIndicator,Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import styles from '../../assets/css/styles';
 const Signup = () => {
@@ -7,11 +8,13 @@ const Signup = () => {
     const [firstName,setFirstName]=useState('');
     const [lastName,setLastName]=useState('');
     const [email,setEmail]=useState('');
-    const [age,setAge]=useState();
+    const [password,setPassword]=useState('');
+    const [cpassword,setCPassword]=useState('');
     const [isLoading,setLoading]=useState(false);
 
     const Register=async()=>{
-      if(firstName=="" || lastName=="" || email=="" || age==""){
+     
+      if(firstName=="" || lastName=="" || email=="" || password=="" || cpassword==""){
         Alert.alert(
           'Warning',
           'All field are required!',
@@ -25,34 +28,47 @@ const Signup = () => {
           ],
           { cancelable: false}
         )
-        setLoading(false)
+      }
+      else if(password!=cpassword){
+        Alert.alert(
+          'Warning',
+          'Password mismatch!',
+          [
+            {
+              text: 'Ok',
+              onPress: () =>{
+                navigation.navigate('Signup')
+            }
+            },
+          ],
+          { cancelable: false}
+        )
       }
       else{
         setLoading(true)
-  const response=await fetch('https://reservation-h7rxq6cut-hicode-byte.vercel.app/customer/register',
-  {
-    method:'POST',
-    headers:{
-      Accept:'application/json',
-      'Content-Type':'application/json'
-    },
-    body:JSON.stringify({
-      firstName:firstName,
-      lastName:lastName,
-      email:email,
-      age:age
-    })
-  })
-  if(response.error){
-    setLoading(false)
-     Alert.alert(
-        'Success',
-        'account was successfully created. Please check your email to read more',
+        try{
+        const customer = JSON.stringify({
+          firstName:firstName,
+          lastName:lastName,
+          email:email,
+          password:password
+        });
+        const config = {
+            headers: {
+            'Content-Type': 'application/json'
+            }
+              };
+    const response = await axios.post('https://reservation-zeta.vercel.app/customer/register', customer, config);
+      if(response.data.error){
+        setLoading(false)
+        Alert.alert(
+        'Notification',
+        `${response.data.error}`,
         [
           {
             text: 'Ok',
             onPress: () =>{
-              navigation.navigate('Login')
+              navigation.navigate('Signup')
           }
           },
         ],
@@ -63,7 +79,7 @@ const Signup = () => {
       setLoading(false)
       Alert.alert(
          'Success',
-         'account was successfully created. Please check your email to read more',
+         'account was successfully created!',
          [
            {
              text: 'Ok',
@@ -72,11 +88,15 @@ const Signup = () => {
            }
            },
          ],
-         { cancelable: false}
+         { cancelable: true}
        )
       }
-    
     }
+    catch(e){
+    }
+    
+  }
+
     }
     return (
       <ScrollView style={styles.container}>
@@ -113,10 +133,16 @@ const Signup = () => {
            onChangeText={(text)=>setEmail(text)}
           style={styles.input}
           />
-      <Text style={styles.heading}>Age</Text>
+      <Text style={styles.heading}>Password</Text>
           <TextInput 
-          keyboardType='numeric'
-          onChangeText={(text)=>setAge(text)}
+          onChangeText={(text)=>setPassword(text)}
+          secureTextEntry={true}
+          style={styles.input}
+          />
+      <Text style={styles.heading}>Re-type password</Text>
+          <TextInput 
+          onChangeText={(text)=>setCPassword(text)}
+          secureTextEntry={true}
           style={styles.input}
           />
           <TouchableOpacity
