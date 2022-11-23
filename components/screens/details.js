@@ -1,5 +1,6 @@
 
 import React ,{useState, useEffect}from 'react';
+import axios from 'axios';
 import { Image,Text,ScrollView, View, TouchableOpacity,ActivityIndicator} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -13,8 +14,8 @@ const Details = ({route}) => {
     const [image,setImage]=useState('');
     const getRoom=async (id)=>{
         try{
-      const response=await fetch('https://reservation-h7rxq6cut-hicode-byte.vercel.app/room/'+id);
-      const data=await response.json();
+      const response=await axios.get('https://reservation-h7rxq6cut-hicode-byte.vercel.app/room/'+id);
+      const data=response.data;
       setName(data.name)
       setSpecifications(data.specifications)
       setPrice(data.price)
@@ -56,7 +57,7 @@ size="large" color="#00ff00"
             style={styles.button}
             onPress={()=>navigation.navigate("Home")}
         >
-        <Text>Check Details</Text>
+        <Text>Check Availability</Text>
         </TouchableOpacity>
         </View>
         </View>

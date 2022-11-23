@@ -27,7 +27,7 @@ export default function App() {
         options={{  headerShown: Platform.OS === 'ios' ? true : false }}
       />
        <Stack.Screen name={'Details'} component={Details}
-        options={{  headerShown: Platform.OS === 'ios' ? true : false }}
+        options={{  headerShown: true }}
             />
       <Stack.Screen  name="Signup" component={Signup} 
         options={{  headerShown: false }}

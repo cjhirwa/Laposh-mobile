@@ -1,5 +1,8 @@
 import React, {useState} from 'react'
-import { TextInput, Text, ScrollView,View, TouchableOpacity,ActivityIndicator,Alert} from 'react-native'
+ import Toast from 'react-native-simple-toast';
+import { AsyncStorage } from 'react-native';
+import { TextInput, Text, ScrollView,View, TouchableOpacity,ActivityIndicator,Alert,ToastAndroid,} from 'react-native'
+import axios from 'axios';
 import { useNavigation } from '@react-navigation/native'
 import styles from '../../assets/css/styles';
 const Login = () => {
@@ -112,6 +115,7 @@ console.log(e)
       >
       <Text style={styles.signup}>Sign up</Text>
       </TouchableOpacity>
+      
       </View>
       </View>
             

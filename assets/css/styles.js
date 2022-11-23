@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      height: 300,
+      height: height-60,
       backgroundColor:COLORS.main
    },
     account:{
@@ -88,6 +88,14 @@ paddingBottom:0
         marginTop:2,
         marginLeft:10
       },
+      titles: {
+        fontSize: 16,
+        fontWeight: '600',
+        marginBottom: -51,
+        color:COLORS.main,
+        marginTop:1,
+        marginLeft:10
+      },
     main:{
         backgroundColor:'rgba(0,0,0,0.7)',
         flex:1,
@@ -97,6 +105,12 @@ paddingBottom:0
         paddingHorizontal:10,
         width:width,
       },
+      list:{
+        backgroundColor:COLORS.main,
+        paddingHorizontal:10,
+        width:width,
+        paddingBottom:60
+      },
       mainForm: {
         backgroundColor: COLORS.secondary,
         borderRadius: 5,
@@ -105,6 +119,17 @@ paddingBottom:0
         padding:5,
         paddingBottom:15,
         width:width-30,
+        marginLeft:5,
+      },
+      reservations: {
+        backgroundColor: COLORS.secondary,
+        borderRadius: 5,
+        marginTop:10,
+        marginBottom:5,
+        padding:5,
+        borderColor: COLORS.main,
+        borderWidth:2,
+        width:width-50,
         marginLeft:5,
       },
       History: {
@@ -165,6 +190,7 @@ margin:5,
 flexWrap:'wrap',
 marginLeft:20
       },
+
       profileManager:{
 justifyContent:'center',
 alignItems:'center',
