@@ -4,8 +4,12 @@ import axios from 'axios';
 import { Image,Text,ScrollView, View, TouchableOpacity,ActivityIndicator} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import styles from '../../assets/css/styles';
-import COLORS from '../../assets/colors/colors';
+import { FontAwesome } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { MaterialIcons } from '@expo/vector-icons'; 
+import styles from '../assets/css/styles';
+import COLORS from '../assets/colors/colors';
+import Header from '../components/header';
 const Details = ({route}) => {
     const [isLoading,setLoading]=useState(true);
     const [name,setName]=useState('');
@@ -29,28 +33,30 @@ const Details = ({route}) => {
     const navigation = useNavigation();
     return(
         <ScrollView>
-        <View style={styles.navBar}>
-        <Text style={styles.logo}>La Posh hotel</Text>
-        </View>
+        <Header/>
       <View style={styles.section}>
       {isLoading?<ActivityIndicator style={styles.activityIndicator}
 size="large" color="#00ff00"
       />:(
       <View style={styles.mainForm}>
       
-        <Image style={styles.image} source={{uri: image}} />
-        <View style={styles.tags}>
+        <Image style={styles.roomimage} source={{uri: image}} />
+        <View style={styles.details}>
             <Text style={styles.heading}>{name}</Text>
+            <Text style={styles.price} >Price: $ {price} /day</Text>
             <Text style={styles.heading}>{specifications}</Text>
-            <Text style={styles.price} >{price}<Text>$</Text></Text>
+            
             
         </View>
-        <Text style={styles.pheading}>
-        {specifications}
-        </Text>
         <Text style={styles.additional}>
-        <Ionicons name="ios-wifi" size={28} color={COLORS.main} />
-        <Text>Free wifi</Text>
+        <Ionicons name="ios-wifi" size={21} color={COLORS.main} />
+        <Text> Free wifi</Text>
+        
+        <Text> | <MaterialCommunityIcons name="fridge-outline" size={21} color="black" /> Fridge</Text>
+
+        
+        <Text> | <FontAwesome name="tv" size={21} color="black" /> Flat TV</Text>
+        <Text> | <MaterialIcons name="free-breakfast" style={{marginTop:10}} size={21} color="black" />Breakfast</Text>
         </Text>
         <View>
         <TouchableOpacity

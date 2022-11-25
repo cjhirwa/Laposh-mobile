@@ -2,7 +2,8 @@ import React, { useState,useEffect } from 'react'
 import axios from 'axios';
 import { Image,Text, View, TouchableOpacity, SafeAreaView,ActivityIndicator,FlatList} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import styles from '../../assets/css/styles';
+import styles from '../assets/css/styles';
+import Heading from '../components/heading';
 const Rooms = () => {
 const url='https://reservation-zeta.vercel.app/rooms';
 let [rooms,setRooms]=useState([]);
@@ -22,9 +23,7 @@ const [isLoading,setLoading]=useState(true);
     const navigation = useNavigation();
     return(
       <SafeAreaView style={styles.container}>
-        <View style={styles.navBar}>
-        <Text style={styles.logo}>La Posh hotel</Text>
-        </View>
+        <Heading />
         {isLoading? 
             <ActivityIndicator
             style={styles.activityIndicator}
@@ -34,19 +33,20 @@ const [isLoading,setLoading]=useState(true);
         <FlatList
         data={rooms}
         renderItem={({item}) => 
-        <View style={styles.mainForm}>
+        <View style={styles.rooms}>
         <Image style={styles.image} source={{uri: item.image}}/> 
         <View style={styles.tags}>
+            <View>
             <Text style={styles.heading}>{item.name}</Text>
-            <Text style={styles.heading}></Text>
+            </View>
+            <View>
             <Text style={styles.price} >{item.price}<Text>$</Text></Text>
-        </View>
-        <View>
-        <TouchableOpacity
-            style={styles.button}
+            </View>
+            <TouchableOpacity
+            style={styles.checkbutton}
             onPress={()=>navigation.navigate("Details",{rid:item._id})}
-        >
-        <Text>Check Details</Text>
+            >
+        <Text>View More</Text>
         </TouchableOpacity>
         </View>
         </View>

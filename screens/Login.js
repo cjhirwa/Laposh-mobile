@@ -4,7 +4,7 @@ import { AsyncStorage } from 'react-native';
 import { TextInput, Text, ScrollView,View, TouchableOpacity,ActivityIndicator,Alert,ToastAndroid,} from 'react-native'
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native'
-import styles from '../../assets/css/styles';
+import styles from '../assets/css/styles';
 const Login = () => {
    const navigation = useNavigation();
    const [password,setPassword]=useState('');

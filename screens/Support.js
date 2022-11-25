@@ -1,7 +1,7 @@
 import React from 'react'
 import { TextInput,ScrollView, Text, View, KeyboardAvoidingView,TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import styles from '../../assets/css/styles';
+import styles from '../assets/css/styles';
 const Support = () => {
     const navigation = useNavigation();
     return (

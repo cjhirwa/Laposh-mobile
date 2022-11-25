@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import axios from 'axios';
 import { TextInput,ScrollView, Text, View, KeyboardAvoidingView,TouchableOpacity,ActivityIndicator,Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import styles from '../../assets/css/styles';
+import styles from '../assets/css/styles';
 const Signup = () => {
     const navigation = useNavigation();
     const [firstName,setFirstName]=useState('');

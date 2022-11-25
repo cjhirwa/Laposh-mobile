@@ -4,7 +4,8 @@ const {width,height}=Dimensions.get("window")
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      position:'relative'
+      position:'relative',
+      backgroundColor:COLORS.white
     },
     activityIndicator: {
       flex: 1,
@@ -38,34 +39,6 @@ marginTop:10
       fontWeight:'bold',
       fontSize:18
           },
-    navBar:{
-        height:60,
-        width:'100%',
-        backgroundColor:COLORS.secondary,
-        borderTopWidth:1,
-        borderTopColor:COLORS.main,
-        elevation:12,
-        paddingHorizontal:10,
-        flexDirection:'row',
-        alignItems:'center',
-        justifyContent:'space-between',
-        paddingHorizontal:10,
-        position:'relative',
-        left:0,
-        right:0,
-        top:0
-    },
-    logo:{
-width:120,
-height:30,
-padding:1,
-fontSize:17,
-fontWeight:'bold',
-fontStyle:'italic',
-color:COLORS.main,
-paddingBottom:0
-
-    },
     profile:{
         width:40,
         height:40,
@@ -80,13 +53,18 @@ paddingBottom:0
       marginBottom: 5,
       color:COLORS.main
     },
+    price: {
+      fontSize: 18,
+      fontWeight: '600',
+      marginBottom: 5,
+      color:COLORS.main
+    },
     pheading: {
         fontSize: 16,
         fontWeight: '600',
         marginBottom: 10,
         color:COLORS.main,
         marginTop:2,
-        marginLeft:10
       },
       titles: {
         fontSize: 16,
@@ -102,34 +80,43 @@ paddingBottom:0
       },
       mainSection:{
         backgroundColor:COLORS.main,
-        paddingHorizontal:10,
+        paddingHorizontal:5,
         width:width,
       },
       list:{
-        backgroundColor:COLORS.main,
-        paddingHorizontal:10,
+        backgroundColor:'rgb(228, 228, 228)',
+        paddingHorizontal:5,
         width:width,
-        paddingBottom:60
+        paddingBottom:110
       },
       mainForm: {
-        backgroundColor: COLORS.secondary,
-        borderRadius: 5,
-        marginTop:20,
-        marginBottom:5,
-        padding:5,
-        paddingBottom:15,
-        width:width-30,
-        marginLeft:5,
-      },
-      reservations: {
         backgroundColor: COLORS.secondary,
         borderRadius: 5,
         marginTop:10,
         marginBottom:5,
         padding:5,
-        borderColor: COLORS.main,
-        borderWidth:2,
-        width:width-50,
+        paddingBottom:15,
+        width:width-10,
+        marginLeft:1,
+      },
+      rooms: {
+        backgroundColor: COLORS.secondary,
+        borderRadius: 5,
+        marginBottom:5,
+        padding:5,
+        flexDirection:'row',
+        paddingBottom:15,
+        width:width-10,
+        marginLeft:1,
+      },
+      reservations: {
+        backgroundColor: COLORS.white,
+        borderRadius: 5,
+        marginTop:5,
+        marginBottom:5,
+        padding:5,
+        elevation:20,
+        width:width-30,
         marginLeft:5,
       },
       History: {
@@ -171,6 +158,12 @@ paddingHorizontal:10,
 color:COLORS.main
       },
       image:{
+        width:'45%',
+        height:100,
+        borderRadius:5,
+      },
+
+      roomimage:{
         width:'100%',
         height:300,
         borderRadius:5,
@@ -192,16 +185,38 @@ marginLeft:20
       },
 
       profileManager:{
-justifyContent:'center',
-alignItems:'center',
-alignContent:'center'
+          justifyContent:'center',
+          alignItems:'center',
+          alignContent:'center'
       },
       tags:{
-marginTop:10,
-flexDirection:'row',
-flexWrap:'wrap',
-justifyContent:'space-around',
+          paddingLeft:15,
+          width:"60%",
+          flexDirection:'column',
       },
+      details:{
+        marginTop:20,
+        paddingHorizontal:20,
+        width:"100%",
+        flexDirection:'row',
+        flexWrap:'wrap',
+        justifyContent:'space-between'
+    },
+  checkbutton:{
+          paddingVertical:5,
+          alignItems: 'center',
+          paddingHorizontal: 20,
+          borderRadius: 4,
+          elevation: 10,
+          fontSize:70,
+          fontWeight:'bold',
+          marginTop:10,
+          backgroundColor: COLORS.secondary,
+          borderColor:COLORS.main,
+          borderWidth:1,
+          borderRadius:10,
+          width:"70%"
+  },
       button:{
         paddingVertical:15,
         alignItems: 'center',
@@ -223,8 +238,8 @@ justifyContent:'space-around',
             },
                 section:{
                   backgroundColor:COLORS.main,
-                  paddingHorizontal:10,
-                  minHeight:height
+                  paddingHorizontal:5,
+                  minHeight:height-70
                   
                 },
                 form: {

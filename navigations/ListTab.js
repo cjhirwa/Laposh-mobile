@@ -4,13 +4,14 @@ import { Entypo } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons'; 
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Rooms from "../screens/Rooms"
+import Login from "../screens/Login";
 import Profile from "../screens/Profile";
-import Reserve from "../screens/Reserve";
+import List from "../screens/List";
 import Reservations from "../screens/Reservations";
 import Support from "../screens/Support";
-import COLORS from "../../assets/colors/colors";
+import COLORS from "../assets/colors/colors";
  const Tab = createBottomTabNavigator()
-const ReserveTab = () =>{
+const ListTab = () =>{
     return(
         <Tab.Navigator 
         screenOptions={{ 
@@ -28,16 +29,15 @@ const ReserveTab = () =>{
                 }}
             />
             <Tab.Screen 
-                name={'Reserve'}
-                component={Reserve}
+                name={'List'}
+                component={List}
                 options = {{
                     tabBarIcon : (color) =>(
-                        <FontAwesome name="order"  size={23} color={COLORS.main}/>
+                        <FontAwesome name="list"  size={23} color={COLORS.main}/>
                     ),
                     headerShown:false
                 }}
             />
-
             <Tab.Screen 
                 name={'Reservations'}
                 component={Reservations}
@@ -48,7 +48,7 @@ const ReserveTab = () =>{
                     headerShown:false
                 }}
             />
-            <Tab.Screen 
+                        <Tab.Screen 
                 name={'Profile'}
                 component={Profile}
                 options = {{
@@ -56,6 +56,16 @@ const ReserveTab = () =>{
                         <Ionicons name="person" size={20} color={COLORS.main}/>
                     ),
                     headerShown:false
+                }}
+            />
+             <Tab.Screen 
+                name={'Login'}
+                component={Login}
+                options = {{
+                    headerShown: false,
+                    tabBarIcon : (color) =>(
+                        <Entypo name="login" size={20} color={COLORS.main} />
+                    )
                 }}
             />
             <Tab.Screen 
@@ -72,4 +82,4 @@ const ReserveTab = () =>{
     )
 }
 
-export default ReserveTab
+export default ListTab

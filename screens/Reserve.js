@@ -2,7 +2,7 @@ import React from 'react'
 
 import { TextInput, Text, View, TouchableOpacity} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import styles from '../../assets/css/styles';
+import styles from '../assets/css/styles';
 const Reserve = () => {
    const navigation = useNavigation();
     return (
@@ -35,7 +35,7 @@ const Reserve = () => {
           </TextInput>
           <TouchableOpacity
         style={styles.button}
-        // onPress={()=>navigation.navigate('Home')}
+         onPress={()=>navigation.navigate('Home')}
       >
       <Text style={styles.heading}>Send</Text>
       </TouchableOpacity>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { TextInput, Text,ScrollView, View, TouchableOpacity} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import styles from '../../assets/css/styles';
+import styles from '../assets/css/styles';
 const CompleteProfile = () => {
    const navigation = useNavigation();
     return (
