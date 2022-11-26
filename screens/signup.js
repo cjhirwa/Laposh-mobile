@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios';
-import { TextInput,ScrollView, Text, View, KeyboardAvoidingView,TouchableOpacity,ActivityIndicator,Alert } from 'react-native'
+import { TextInput,SafeAreaView,ScrollView, Text, View, KeyboardAvoidingView,TouchableOpacity,ActivityIndicator,Alert,Image } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import styles from '../assets/css/styles';
 const Signup = () => {
@@ -99,22 +99,20 @@ const Signup = () => {
 
     }
     return (
-      <ScrollView style={styles.container}>
-      <View style={styles.main}>
-      <View style={styles.section}>
-      <Text style={styles.title}>
-            La posh Hotel
-          </Text>
-          <View style={styles.line}/>
-      <Text style={styles.subtitle}>
-            Create Account
-          </Text>
-          {isLoading? 
+      <SafeAreaView style={styles.container}>
+      {isLoading?
+          <View style= {styles.activityIndicator}>
             <ActivityIndicator
-            style={styles.activityIndicator}
-            size="large"
-            />:(
-      <View style={[styles.form, styles.elevation]}>
+            style= {styles.indicator}
+            size={70}
+            /><Text style={styles.signup}>We are creating your account...</Text></View>:(
+      <ScrollView style={styles.main}>
+      <View style={[styles.loginForm, styles.elevation]}>
+      <View>
+            <Image style={styles.mainlogo} source={require("../assets/icon.png")} />
+        </View> 
+        <Text style={styles.subtitle}>Create account</Text>
+        <View style={styles.line}/>
       <Text style={styles.heading}>First Name</Text>
           <TextInput 
           onChangeText={(text)=>setFirstName(text)}
@@ -125,9 +123,7 @@ const Signup = () => {
          onChangeText={(text)=>setLastName(text)}
         style={styles.input}
         />
-      <KeyboardAvoidingView
-        behavior={Platform.OS == "ios" ? "padding" : "height"}
-      >
+      <KeyboardAvoidingView>
       <Text style={styles.heading}>Email</Text>
           <TextInput 
            onChangeText={(text)=>setEmail(text)}
@@ -153,7 +149,8 @@ const Signup = () => {
       </TouchableOpacity>
       </KeyboardAvoidingView>
       </View>
-            )}
+  
+
       <View style={styles.miniForm}>
       <View style={styles.account}>
       <Text style={styles.pheading}>Already have an account?</Text>
@@ -164,9 +161,9 @@ const Signup = () => {
       </TouchableOpacity>
       </View>
       </View>
-      </View>
-      </View>
-      </ScrollView>
+      </ScrollView>  
+      )}
+      </SafeAreaView>
     )
 }
 export default Signup

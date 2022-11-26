@@ -23,7 +23,7 @@ const Header = () => {
     <View style={styles.main} >
     <View style={styles.container}> 
         <View>
-            <Image style={styles.logo} source={require("../assets/images/logo.jpg")} />
+            <Image style={styles.logo} source={require("../assets/icon.png")} />
         </View>
 
         {isLoggedIn?

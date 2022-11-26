@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
  import Toast from 'react-native-simple-toast';
 import { AsyncStorage } from 'react-native';
-import { TextInput, Text, ScrollView,View, TouchableOpacity,ActivityIndicator,Alert,ToastAndroid,} from 'react-native'
+import { TextInput, Text, ScrollView,View, TouchableOpacity,ActivityIndicator,Alert,Image,ToastAndroid,} from 'react-native'
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native'
 import styles from '../assets/css/styles';
@@ -68,20 +68,20 @@ console.log(e)
     return (
       <ScrollView style={styles.container}>
       <View style={styles.main}>
-      <View style={styles.section}>
-      <Text style={styles.title}>
-            La Posh Hotel
-          </Text>
-          <View style={styles.line}/>
-          <Text style={styles.subtitle}>
-            Login
-          </Text> 
-          {isLoading? 
+     
+          {isLoading?
+          <View style= {styles.activityIndicator}>
             <ActivityIndicator
-            style={styles.activityIndicator}
-            size="large"
-            />:(
+            style= {styles.indicator}
+            size={70}
+            /><Text style={styles.signup}>Logging in...</Text></View>:(
+            <View style={styles.section}>
       <View style={[styles.loginForm, styles.elevation]}>
+      <View>
+            <Image style={styles.mainlogo} source={require("../assets/icon.png")} />
+        </View> 
+        <Text style={styles.subtitle}>Welcome Back</Text>
+        <View style={styles.line}/>
       <Text style={styles.heading}>Username</Text>
           <TextInput 
            onChangeText={(text)=>setEmail(text)}
@@ -103,10 +103,10 @@ console.log(e)
       <Text style={styles.heading}>Login</Text>
       </TouchableOpacity>
 
-      <View style={styles.line}/>
+      
       <Text style={styles.cover}>Forgot Password?</Text>
       </View>
-      )}
+      
       <View style={styles.miniForm}>
       <View style={styles.account}>
       <Text style={styles.pheading}>Don't have an account?</Text>
@@ -118,8 +118,8 @@ console.log(e)
       
       </View>
       </View>
-            
       </View>
+      )}
       </View>
       </ScrollView>
     )

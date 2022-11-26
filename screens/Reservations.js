@@ -71,10 +71,9 @@ const logout_url='https://reservation-zeta.vercel.app/customer/logout';
       <SafeAreaView>
       <Header/>
         <View style={styles.section}>
-        {isLoading?<ActivityIndicator
-            style={styles.activityIndicator}
+        {isLoading?<View style={styles.activityIndicator}><ActivityIndicator 
             size="large"
-            />:(
+            /><Text>Loading</Text></View>:(
 
       <View style={styles.mainForm}>
       <View style={styles.label}>

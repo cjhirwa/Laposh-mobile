@@ -25,10 +25,11 @@ const [isLoading,setLoading]=useState(true);
       <SafeAreaView style={styles.container}>
         <Heading />
         {isLoading? 
+          <View style= {styles.activityIndicator}>
             <ActivityIndicator
-            style={styles.activityIndicator}
-            size="large"
-            />:(
+            style= {styles.indicator}
+            size={70}
+            /><Text style={styles.signup}>Loading rooms...</Text></View>:(
         <View style={styles.list}>
         <FlatList
         data={rooms}

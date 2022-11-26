@@ -24,7 +24,7 @@ const Heading = () => {
     <View style={styles.main}>
     <View style={styles.titlebar}> 
         <View>
-            <Image style={styles.logo} source={require("../assets/images/logo.jpg")} />
+            <Image style={styles.logo} source={require("../assets/icon.png")} />
         </View>
 
         {isLoggedIn?
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     logo:{
         width:80,
         height:40,
-        borderRadius:10,
+        borderRadius:5,
         elevation: 20, 
     },
 

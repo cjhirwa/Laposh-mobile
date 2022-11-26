@@ -9,6 +9,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons'; 
 import styles from '../assets/css/styles';
+import Header from '../components/header';
 const Profile = () => {
     const [isLoading,setLoading]=useState(true);
     const [lname,setLastName]=useState('');
@@ -31,12 +32,6 @@ const logout_url='https://reservation-zeta.vercel.app/customer/logout';
         setFirstName(data.firstName)
         setLastName(data.lastName)
         setUserName(data.email)
-
-      const reservations=await axios.get(reservations_url,{headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-        }});
-        setReservations(reservations.data);
         setLoading(false)
     }
     catch(e){
@@ -68,9 +63,7 @@ const logout_url='https://reservation-zeta.vercel.app/customer/logout';
     const navigation = useNavigation();
     return(
       <SafeAreaView>
-        <View style={styles.navBar}>
-        <Text style={styles.logo}>La Posh hotel</Text>
-        </View>
+        <Header/>
         <View style={styles.section}>
         {isLoading?<ActivityIndicator
             style={styles.activityIndicator}
@@ -99,25 +92,6 @@ const logout_url='https://reservation-zeta.vercel.app/customer/logout';
         
         )
       }
-      <View style={styles.mainForm}>
-      <View style={styles.label}>
-            <Text style={styles.pheading}>Hello {fname}{', Here is the history of your reservations at La posh Hotel\n'}</Text>
-            </View>
-            <FlatList
-        data={reservations}
-        renderItem={({item}) => 
-            <View style={styles.reservations}>
-        <View style={styles.label}>
-        <Octicons name="cross-reference" size={24} color="black" />
-            <Text style={styles.titles}>{item.reference}{'\n'}</Text>
-            </View>
-            <View style={styles.label}>
-            <FontAwesome name="calendar-check-o" size={24} color="black" />
-            <Text style={styles.titles}>{item.checkInDate}{'\n'}</Text>
-        </View>
-        </View>
-        }/>
-        </View>
         </View>
         </SafeAreaView>
     )}

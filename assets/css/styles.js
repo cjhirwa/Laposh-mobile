@@ -12,22 +12,21 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       height: height-60,
-      backgroundColor:COLORS.main
+      backgroundColor:COLORS.bg,
+      marginHorizontal:-10
    },
     account:{
-      height:60,
-      marginTop:30,
+      marginVertical:20,
       marginHorizontal:30,
       flexDirection:'row',
     },
     cover:{
-color:COLORS.main,
+color:'#0083A3',
 marginHorizontal:5,
-marginTop:1,
-textAlign:'center',
-fontSize:18,
+marginTop:40,
+textAlign:'right',
+fontSize:14,
 fontWeight: '600',
-marginTop:10
     },
     tab:{
       backgroundColor:COLORS.main
@@ -37,7 +36,7 @@ marginTop:10
       marginHorizontal:5,
       marginTop:1,
       fontWeight:'bold',
-      fontSize:18
+      fontSize:15
           },
     profile:{
         width:40,
@@ -46,6 +45,11 @@ marginTop:10
         borderColor:COLORS.main,
         borderWidth:1,
         padding:1
+    },
+    indicator: {
+      padding: 12,
+      backgroundColor: COLORS.white,
+      borderRadius: 12
     },
     heading: {
       fontSize: 18,
@@ -79,7 +83,7 @@ marginTop:10
         flex:1,
       },
       mainSection:{
-        backgroundColor:COLORS.main,
+        backgroundColor:COLORS.bg,
         paddingHorizontal:5,
         width:width,
       },
@@ -90,7 +94,7 @@ marginTop:10
         paddingBottom:110
       },
       mainForm: {
-        backgroundColor: COLORS.secondary,
+        backgroundColor: COLORS.white,
         borderRadius: 5,
         marginTop:10,
         marginBottom:5,
@@ -221,25 +225,24 @@ marginLeft:20
         paddingVertical:15,
         alignItems: 'center',
         justifyContent: 'center',
-        paddingVertical: 12,
-        paddingHorizontal: 32,
+        paddingVertical: 5,
+        paddingHorizontal: 50,
         borderRadius: 4,
         elevation: 10,
         fontSize:70,
         fontWeight:'bold',
         color:'white',
         marginTop:30,
-        width:200,
         alignSelf:'center',
-        backgroundColor: COLORS.secondary,
         borderColor:COLORS.main,
-        borderWidth:2,
+        borderWidth:1,
+        backgroundColor: COLORS.white,
         borderRadius:20
             },
                 section:{
-                  backgroundColor:COLORS.main,
+                  backgroundColor:COLORS.bg,
                   paddingHorizontal:5,
-                  minHeight:height-70
+                  minHeight:height-65
                   
                 },
                 form: {
@@ -249,32 +252,39 @@ marginLeft:20
                   paddingHorizontal: 25,
                   marginTop:30,
                 },
+                mainlogo:{
+                  width:"50%",
+                  height:80,
+                  marginHorizontal:"25%",
+                },
                 loginForm: {
                   borderRadius: 5,
-                  backgroundColor: COLORS.secondary,
-                  paddingVertical: 45,
+                  backgroundColor: COLORS.white,
+                  paddingVertical: 10,
                   paddingHorizontal: 25,
                   marginTop:30,
+                  marginHorizontal:10
                 },
                 miniForm: {
-                  backgroundColor: COLORS.secondary,
-                  paddingVertical: 5,
+                  backgroundColor: COLORS.white,
                   paddingHorizontal: 10,
-                  marginTop:5,
+                  marginTop:10,
+                  borderRadius: 5,
+                  marginHorizontal:10
                 },
                 line:{
-                  marginTop:30,
+                  marginBottom:30,
                   borderBottomColor: COLORS.grey,
                   borderBottomWidth: 1,
                 },
                 title:{
-                  color:'white',
+                  color:COLORS.main,
                   marginTop:20,
                   fontSize:32,
                   textAlign:'center',
                 },
                 subtitle:{
-                  color:'white',
+                  color:COLORS.main,
                   marginTop:10,
                   fontSize:24,
                   fontWeight:'bold',
@@ -282,7 +292,7 @@ marginLeft:20
                 },
 
                         main:{
-                          backgroundColor:'rgba(0,0,0,0.5)',
+                          backgroundColor:COLORS.bg,
                           flex:1,
                         },
                     input:{
@@ -293,10 +303,11 @@ marginLeft:20
                     paddingHorizontal: 20,
                     borderRadius: 4,
                     height:45,
-                    elevation: 6,
+                    elevation: 10,
+
                     fontSize:16,
                     fontWeight:'bold',
-                    backgroundColor: COLORS.secondary,
+                    backgroundColor: COLORS.white,
                         },
   
     }

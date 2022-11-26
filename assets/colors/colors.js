@@ -7,6 +7,7 @@ const COLORS = {
     grey: '#908e8c',
     orange: '#f5a623',
     main:'#023020',
+    bg:'rgb(228, 228, 228)',
     blue:'#0083A3'
   };
   
