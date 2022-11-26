@@ -1,33 +1,64 @@
-import React from 'react'
-import { Image,Text, View,ScrollView, TouchableOpacity, SafeAreaView} from 'react-native'
+import React, { useState,useEffect } from 'react'
+import axios from 'axios';
+import { Image,Text, View, TouchableOpacity, SafeAreaView,ActivityIndicator,FlatList} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import styles from '../assets/css/styles';
-const List = () => {
+import Heading from '../components/heading';
+const List = ({route}) => {
+  const check_in_date=route.params.check_in_date;
+  const check_out_date=route.params.check_out_date;
+const url='https://reservation-zeta.vercel.app/list/'+check_in_date+'/'+check_out_date;
+let [rooms,setRooms]=useState([]);
+const [isLoading,setLoading]=useState(true);
+
+  const getRooms=async ()=>{
+    try{
+      console.log(url)
+      const response=await axios.get(url);
+      setRooms(response.data)
+      setLoading(false)
+    }
+    catch(e){
+    }
+  }  
+  useEffect(()=>{getRooms()},[]);
     const navigation = useNavigation();
     return(
-      <View style={styles.container}>
-        <View style={styles.navBar}>
-        <Text style={styles.logo}>La Posh Hotel</Text>
-        </View>
-      <View style={styles.mainSection}>
-      <View style={styles.mainForm}>
-        <Image style={styles.image} source={require('../assets/b1.jpg')} />
+      <SafeAreaView style={styles.container}>
+        <Heading />
+        {isLoading? 
+          <View style= {styles.activityIndicator}>
+            <ActivityIndicator
+            style= {styles.indicator}
+            size={70}
+            /><Text style={styles.signup}>Loading rooms...</Text></View>:(
+        <View style={styles.list}>
+        <FlatList
+        data={rooms}
+        renderItem={({item}) => 
+        <View style={styles.rooms}>
+        <Image style={styles.image} source={{uri: item.image}}/> 
         <View style={styles.tags}>
-            <Text style={styles.heading}>Standard</Text>
-            <Text style={styles.heading}>Ocean View</Text>
-            <Text style={styles.price} >700<Text>$</Text></Text>
-        </View>
-        <View>
-        <TouchableOpacity
-            style={styles.button}
-            onPress={()=>navigation.navigate("Details")}
-        >
-        <Text>Check Details</Text>
+            <View>
+            <Text style={styles.heading}>{item.name}</Text>
+            </View>
+            <View>
+            <Text style={styles.price} >{item.price}<Text>$</Text></Text>
+            </View>
+            <TouchableOpacity
+            style={styles.checkbutton}
+            onPress={()=>navigation.navigate("Room",{rid:item._id,cindate:check_in_date,coutdate:check_out_date})}
+            >
+        <Text>View More</Text>
         </TouchableOpacity>
         </View>
         </View>
+        }
+      />   
       </View>
-        </View>
+     
+      )}
+        </SafeAreaView>
     )
   }
 export default List

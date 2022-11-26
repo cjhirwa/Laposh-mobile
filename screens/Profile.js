@@ -6,6 +6,7 @@ import {DevSettings} from 'react-native';
 import axios from 'axios';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { FontAwesome } from '@expo/vector-icons'; 
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import { Octicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons'; 
 import styles from '../assets/css/styles';
@@ -32,6 +33,12 @@ const logout_url='https://reservation-zeta.vercel.app/customer/logout';
         setFirstName(data.firstName)
         setLastName(data.lastName)
         setUserName(data.email)
+
+        const reservations=await axios.get(reservations_url,{headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+          }});
+          setReservations(reservations.data);
         setLoading(false)
     }
     catch(e){
@@ -65,12 +72,14 @@ const logout_url='https://reservation-zeta.vercel.app/customer/logout';
       <SafeAreaView>
         <Header/>
         <View style={styles.section}>
-        {isLoading?<ActivityIndicator
-            style={styles.activityIndicator}
-            size="large"
-            />:(
-     
-      <View style={styles.mainForm}>
+        {isLoading?
+          <View style= {styles.activityIndicator}>
+            <ActivityIndicator
+            style= {styles.indicator}
+            size={70}
+            /><Text style={styles.signup}>Loading...</Text></View>:(
+              <View>
+      <View style={styles.profile}>
         <View style={styles.label}>
         <Ionicons name="person" size={26} color="black" />
             <Text style={styles.titles}>{lname}{' '}{fname}{'\n'}</Text>
@@ -89,11 +98,31 @@ const logout_url='https://reservation-zeta.vercel.app/customer/logout';
         </View>
         
         </View>
-        
+        <View style={styles.profile}>
+      <View style={styles.label}>
+        <Text style={styles.pheading}>{'My Bookings\n'}</Text>
+            </View>
+            <FlatList
+        data={reservations}
+        renderItem={({item}) => 
+            <View style={styles.reservations}>
+        <View style={styles.label}>
+        <Octicons name="cross-reference" size={24} color="black" />
+            <Text style={styles.titles}>{item.reference}{'\n'}</Text>
+            </View>
+            <View style={styles.label}>
+            <FontAwesome name="calendar-check-o" size={24} color="black" />
+            <Text style={styles.titles}>{item.checkInDate}{'\n'}</Text>
+        </View>
+        </View>
+        }/>
+        </View>
+        </View>
         )
       }
         </View>
         </SafeAreaView>
+
     )}
 
 export default Profile

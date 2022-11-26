@@ -2,23 +2,18 @@ import React, {useState,useEffect} from 'react'
 import { AsyncStorage } from 'react-native';
 import { ActivityIndicator, FlatList,Text,SafeAreaView, View,TouchableOpacity} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import {DevSettings} from 'react-native';
 import axios from 'axios';
-import Ionicons from '@expo/vector-icons/Ionicons';
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import { FontAwesome } from '@expo/vector-icons'; 
 import { Octicons } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
 import Header from '../components/header'; 
 import styles from '../assets/css/styles';
 const Reservations = () => {
     const [isLoading,setLoading]=useState(true);
-    const [lname,setLastName]=useState('');
     const [fname,setFirstName]=useState('');
-    const [username,setUserName]=useState('');
     const [reservations,setReservations]=useState([]);
 const profile_url='https://reservation-zeta.vercel.app/customer/me/profile';
 const reservations_url='https://reservation-zeta.vercel.app/me/reservations';
-const logout_url='https://reservation-zeta.vercel.app/customer/logout';
 
 
   const getData=async ()=>{
@@ -30,8 +25,6 @@ const logout_url='https://reservation-zeta.vercel.app/customer/logout';
         }});
         const data=response.data;
         setFirstName(data.firstName)
-        setLastName(data.lastName)
-        setUserName(data.email)
 
       const reservations=await axios.get(reservations_url,{headers: {
         'Content-Type': 'application/json',
@@ -45,35 +38,18 @@ const logout_url='https://reservation-zeta.vercel.app/customer/logout';
     }
   }
 
-  const Logout=async ()=>{
-    try{
-        setLoading(true)
-        const token=await AsyncStorage.getItem('token');
-        const response=await fetch(logout_url,{
-          method: 'POST',
-          headers: {
-            Authorization: `Bearer ${token}`
-          },
-        }
-        );
-        await AsyncStorage.removeItem('token');
-        DevSettings.reload();
-        setLoading(false);
-        
-    }
-    catch(e){
-        console.log(e)
-    }
-  }
-  useEffect(()=>{getData()},[]);
+  useEffect(()=>{getData()});
     const navigation = useNavigation();
     return(
       <SafeAreaView>
       <Header/>
         <View style={styles.section}>
-        {isLoading?<View style={styles.activityIndicator}><ActivityIndicator 
-            size="large"
-            /><Text>Loading</Text></View>:(
+        {isLoading?
+          <View style= {styles.activityIndicator}>
+            <ActivityIndicator
+            style= {styles.indicator}
+            size={70}
+            /><Text style={styles.signup}>Loading...</Text></View>:(
 
       <View style={styles.mainForm}>
       <View style={styles.label}>
@@ -88,8 +64,16 @@ const logout_url='https://reservation-zeta.vercel.app/customer/logout';
             <Text style={styles.titles}>{item.reference}{'\n'}</Text>
             </View>
             <View style={styles.label}>
+            <FontAwesome name="bed"  size={24} color="black"/>
+            <Text style={styles.titles}>{item.room_id}{'\n'}</Text>
+            </View>
+            <View style={styles.label}>
             <FontAwesome name="calendar-check-o" size={24} color="black" />
             <Text style={styles.titles}>{item.checkInDate}{'\n'}</Text>
+        </View>
+        <View style={styles.label}>
+        <MaterialCommunityIcons name="clock-check-outline" size={24} color="black" />
+            <Text style={styles.titles}>{item.checkOutDate}{'\n'}</Text>
         </View>
         </View>
         }/>

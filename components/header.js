@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
         paddingLeft:10,
         paddingRight:20,
         borderTopColor:COLORS.main,
-        borderTopWidth:2,
+        borderTopWidth:1,
         shadowColor: '#52006A',  
         elevation: 20
     },

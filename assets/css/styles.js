@@ -91,7 +91,7 @@ fontWeight: '600',
         backgroundColor:'rgb(228, 228, 228)',
         paddingHorizontal:5,
         width:width,
-        paddingBottom:110
+        paddingBottom:160
       },
       mainForm: {
         backgroundColor: COLORS.white,
@@ -102,6 +102,16 @@ fontWeight: '600',
         paddingBottom:15,
         width:width-10,
         marginLeft:1,
+      },
+      profile: {
+        backgroundColor: COLORS.white,
+        borderRadius: 5,
+        marginTop:"10%",
+        marginBottom:5,
+        padding:5,
+        paddingBottom:15,
+        width:"90%",
+        marginHorizontal:"5%"
       },
       rooms: {
         backgroundColor: COLORS.secondary,
@@ -119,9 +129,8 @@ fontWeight: '600',
         marginTop:5,
         marginBottom:5,
         padding:5,
-        elevation:20,
-        width:width-30,
-        marginLeft:5,
+        elevation:5,
+        marginHorizontal:5,
       },
       History: {
         backgroundColor: COLORS.secondary,
@@ -221,6 +230,21 @@ marginLeft:20
           borderRadius:10,
           width:"70%"
   },
+  mainbutton:{
+    paddingVertical:5,
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    borderRadius: 4,
+    elevation: 10,
+    fontSize:70,
+    fontWeight:'bold',
+    marginTop:10,
+    backgroundColor: COLORS.secondary,
+    borderColor:COLORS.main,
+    borderWidth:1,
+    paddingVertical:10,
+    width:"100%"
+},
       button:{
         paddingVertical:15,
         alignItems: 'center',
@@ -264,6 +288,17 @@ marginLeft:20
                   paddingHorizontal: 25,
                   marginTop:30,
                   marginHorizontal:10
+                },
+                check: {
+                  borderRadius: 5,
+                  backgroundColor: COLORS.white,
+                  paddingVertical: 10,
+                  paddingHorizontal: 15,
+                  marginTop:30,
+                  width:"80%",
+                  marginHorizontal:"10%",
+                  borderWidth:1,
+                  borderColor:COLORS.main
                 },
                 miniForm: {
                   backgroundColor: COLORS.white,
@@ -309,6 +344,18 @@ marginLeft:20
                     fontWeight:'bold',
                     backgroundColor: COLORS.white,
                         },
+                   variableInput:{
+                          marginBottom:15,
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          paddingVertical: 10,
+                          paddingHorizontal: 20,
+                          borderRadius: 4,
+                          elevation: 10,
+                          fontSize:16,
+                          fontWeight:'bold',
+                          backgroundColor: COLORS.white,
+                              },
   
     }
   

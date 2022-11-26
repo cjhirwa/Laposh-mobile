@@ -1,55 +1,139 @@
-import React from 'react'
-import { TextInput,ScrollView, Text, View, KeyboardAvoidingView,TouchableOpacity } from 'react-native'
+import React,{useState} from 'react'
+import axios from 'axios';
+import { TextInput,ScrollView, Text,SafeAreaView,View, KeyboardAvoidingView,TouchableOpacity,Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import styles from '../assets/css/styles';
+import Header from '../components/header';
 const Support = () => {
     const navigation = useNavigation();
+    const [firstName,setFirstName]=useState('');
+    const [lastName,setLastName]=useState('');
+    const [email,setEmail]=useState('');
+    const [message,setMessage]=useState('');
+    const [isLoading,setLoading]=useState(false);
+
+    const sendRequest=async()=>{
+      if(firstName=="" || lastName=="" || email=="" || message==""){
+        Alert.alert(
+          'Warning',
+          'All field are required!',
+          [
+            {
+              text: 'Ok',
+              onPress: () =>{
+                navigation.navigate('Support')
+            }
+            },
+          ],
+          { cancelable: false}
+        )
+      }
+      else{
+        setLoading(true)
+        try{
+        const customer = JSON.stringify({
+          firstName:firstName,
+          lastName:lastName,
+          email:email,
+          message:message
+        });
+        const config = {
+            headers: {
+            'Content-Type': 'application/json'
+            }
+              };
+    const response = await axios.post('https://reservation-zeta.vercel.app/customer/request', customer, config);
+      if(response.data.error){
+        setLoading(false)
+        Alert.alert(
+        'Notification',
+        `${response.data.error}`,
+        [
+          {
+            text: 'Ok',
+            onPress: () =>{
+              navigation.navigate('Support')
+          }
+          },
+        ],
+        { cancelable: false}
+      )
+     }
+     else{
+      setLoading(false)
+      Alert.alert(
+         'Success',
+         'Your request was Accepted, we will reach you soon!',
+         [
+           {
+             text: 'Ok',
+             onPress: () =>{
+               navigation.navigate('Home')
+           }
+           },
+         ],
+         { cancelable: true}
+       )
+      }
+    }
+    catch(e){
+    }
+    
+  }
+
+    }
     return (
-      <ScrollView style={styles.main}>
+      <SafeAreaView  style={styles.container}>
+      <Header/>
+      {isLoading?
+          <View style= {styles.activityIndicator}>
+            <ActivityIndicator
+            style= {styles.indicator}
+            size={70}
+            /><Text style={styles.signup}>Sending...</Text></View>:(
+       <ScrollView>
       <View style={styles.section}>
-      <Text style={styles.title}>
-            La posh Hotel
-          </Text>
-          <View style={styles.line}/>
       <Text style={styles.subtitle}>
             Support Request
           </Text>
-      <View style={[styles.form, styles.elevation]}>
+      <View style={[styles.loginForm, styles.elevation]}>
       <Text style={styles.heading}>First name</Text>
           <TextInput 
           style={styles.input}
+          onChangeText={(text)=>setFirstName(text)}
           />
       <Text style={styles.heading}>Last name</Text>
           <TextInput 
           style={styles.input}
+          onChangeText={(text)=>setLastName(text)}
           />
         <KeyboardAvoidingView
-        behavior={Platform.OS == "ios" ? "padding" : "height"}
       >
       <Text style={styles.heading}>Email</Text>
           <TextInput 
           style={styles.input}
+          onChangeText={(text)=>setEmail(text)}
           />
 
       <Text style={styles.heading}>Describe your Problem</Text>
           <TextInput 
-          style={styles.input}
+          style={styles.variableInput}
           multiline
-        numberOfLines={15}
+        numberOfLines={10}
+        onChangeText={(text)=>setMessage(text)}
           />
       </KeyboardAvoidingView>
       <TouchableOpacity
         style={styles.button}
-        // onPress={()=>navigation.navigate('Login')}
+        onPress={()=>sendRequest()}
       >
         <Text style={styles.heading}>Send</Text>
       </TouchableOpacity>
       </View>
       </View>
-      <View style={styles.nav}>
-
-      </View>
       </ScrollView>
+            )}
+      </SafeAreaView>
     )
 }
 export default Support

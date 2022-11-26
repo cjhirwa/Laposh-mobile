@@ -1,21 +1,132 @@
-import React from 'react'
-import { Image,Text, View, TouchableOpacity, SafeAreaView,ActivityIndicator} from 'react-native'
+import React, { useState } from 'react'
+import Heading from '../components/heading';
+import { View, Text, StyleSheet, Button, TextInput, Picker,Alert, TouchableOpacity } from 'react-native'
+import DateTimePicker from '@react-native-community/datetimepicker'
 import { useNavigation } from '@react-navigation/native'
 import styles from '../assets/css/styles';
-import Heading from '../components/heading';
+function useInput() {
+    const [date, setDate] = useState(new Date());
+    const [mode, setMode] = useState('date');
+    const [show, setShow] = useState(false);
+
+    const showMode = (currentMode) => {
+        setShow(true);
+        setMode(currentMode);
+    };
+    const showDatepicker = () => {
+        showMode('date');
+    };
+
+    const onChange = (event, selectedDate) => {
+      // const datePart = selectedDate.toISOString("dd/mm/yyyy").split( "T" );
+        const currentDate = selectedDate || date
+        setShow(Platform.OS === 'ios');
+        setDate(currentDate);
+        console.log(currentDate)
+    }
+    return {
+        date,
+        showDatepicker,
+        show,
+        mode,
+        onChange
+    }
+}
+
 const Home = () => {
+    const input = useInput(new Date())
+    const input2 = useInput(new Date())
     const navigation = useNavigation();
-    return(
-      <SafeAreaView style={styles.container}>
-        <Heading />
-        <View style={styles.mainForm}>
-        <View style={styles.tags}>
-            <Text style={styles.heading}>Nox</Text>
-            <Text style={styles.heading}></Text>
-            
-        </View>
-        </View>  
-        </SafeAreaView>
-    )
-  }
-export default Home
+
+        function goToList() {
+      if(input==null || input2==null)
+      {
+        Alert.alert(
+          'Warning',
+          'All field are required!',
+          [
+            {
+              text: 'Ok',
+              onPress: () =>{
+                this.props.navigation.navigate('Home')
+            }
+            },
+          ],
+          { cancelable: false}
+        )
+      }
+      else if(input2 < input)
+      {
+        Alert.alert(
+          'Warning',
+          'Check out date must be greater than or equal check in date!',
+          [
+            {
+              text: 'Ok',
+              onPress: () =>{
+                navigation.navigate('Home')
+            }
+            },
+          ],
+          { cancelable: false}
+        )
+      }
+      else{
+       navigation.navigate('List',{check_in_date:input.date.toISOString("dd/mm/yyyy").split( "T" )[0],check_out_date:input2.date.toISOString("dd/mm/yyyy").split( "T" )[0]})
+       
+      }
+
+    }
+return (
+        <View >
+        <Heading/>
+        <View style={[styles.check, styles.elevation]}>
+        <Text style={styles.heading}>Check in date</Text>
+           <TouchableOpacity             
+              onPress={input.showDatepicker}
+              style={styles.input}
+              >
+              {input.show && (
+                   <DateTimePicker
+                   testID="dateTimePicker1"
+                   value={input.date}
+                   format="DD-MM-YYYY"
+                   mode={input.mode}
+                   is24Hour={true}
+                   display="default"
+                   onChange={input.onChange}
+                   />
+               )}
+               <Text>{input.date.getFullYear()}{"-"}{input.date.getMonth()+1}{"-"}{input.date.getDate()}</Text>
+               </TouchableOpacity>
+               
+
+               <TouchableOpacity              
+              onPress={input2.showDatepicker}
+              style={styles.input}
+              >
+              {input2.show && (
+                   <DateTimePicker
+                   testID="dateTimePicker2"
+                   value={input2.date}
+                   format="DD-MM-YYYY"
+                   mode={input2.mode}
+                   is24Hour={true}
+                   display="default"
+                   onChange={input2.onChange}
+                    />
+              )}
+              <Text>{input2.date.getFullYear()}{"-"}{input2.date.getMonth()+1}{"-"}{input2.date.getDate()}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                    style={styles.mainbutton}
+                        onPress={() => goToList()}>
+                        <Text>Check Availability</Text>
+                    </TouchableOpacity>
+              </View>
+              </View>
+  )
+}
+export default Home;
+
+
