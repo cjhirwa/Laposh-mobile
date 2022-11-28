@@ -7,66 +7,27 @@ import { StripeProvider } from "@stripe/stripe-react-native";
 const API_URL = "https://reservation-zeta.vercel.app/pay";
 
 const Payment = props => {
-  const [email, setEmail] = useState();
   const [cardDetails, setCardDetails] = useState();
-  const { confirmPayment, loading } = useConfirmPayment();
 
-  const fetchPaymentIntentClientSecret = async () => {
+  const pay = async () => {
     const response = await fetch(`${API_URL}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
+      body:{
+        
+      }
     });
     const { clientSecret, error } = await response.json();
     return { clientSecret, error };
   };
 
-  const handlePayPress = async () => {
-    //1.Gather the customer's billing information (e.g., email)
-    if (!cardDetails?.complete || !email) {
-      Alert.alert("Please enter Complete card details and Email");
-      return;
-    }
-    const billingDetails = {
-      email: email,
-    };
-    //2.Fetch the intent client secret from the backend
-    try {
-      const { clientSecret, error } = await fetchPaymentIntentClientSecret();
-      //2. confirm the payment
-      if (error) {
-        console.log("Unable to process payment");
-      } else {
-        const { paymentIntent, error } = await confirmPayment(clientSecret, {
-          type: "Card",
-          billingDetails: billingDetails,
-        });
-        if (error) {
-          alert(`Payment Confirmation Error ${error.message}`);
-        } else if (paymentIntent) {
-          alert("Payment Successful");
-          console.log("Payment successful ", paymentIntent);
-        }
-      }
-    } catch (e) {
-      console.log(e);
-    }
-    //3.Confirm the payment with the card details
-  };
-
   return (
     <View style={styles.container}>
      <StripeProvider publishableKey="pk_test_51M6cw2EWgd0HEd71iIOBqXn7dZ2YoHXHmEd8nZ0NF587oo8PgPrpDQklfky8PxoVEAg7EpDjQfgWnWPoflvUBae700CbrMFltM">
-     <TextInput
-        autoCapitalize="none"
-        placeholder="E-mail"
-        keyboardType="email-address"
-        onChange={value => setEmail(value.nativeEvent.text)}
-        style={styles.input}
-      />
       <CardField
-        postalCodeEnabled={true}
+        postalCodeEnabled={false}
         placeholder={{
           number: "4242 4242 4242 4242",
         }}
@@ -76,7 +37,7 @@ const Payment = props => {
           setCardDetails(cardDetails);
         }}
       />
-      <Button onPress={handlePayPress} title="Pay" disabled={loading} />
+      <Button onPress={pay} title="Pay" disabled={loading} />
     </StripeProvider>
       
     </View>
