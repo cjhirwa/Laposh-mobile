@@ -1,6 +1,6 @@
-
 import React ,{useState, useEffect}from 'react';
 import axios from 'axios';
+import { AsyncStorage } from 'react-native';
 import { Image,Text,ScrollView, View, TouchableOpacity,ActivityIndicator} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -12,22 +12,28 @@ import COLORS from '../assets/colors/colors';
 import Header from '../components/header';
 const Bookable = ({route}) => {
     const [isLoading,setLoading]=useState(true);
+    const [isLoggedIn,setLoggedIn]=useState(false);
     const [name,setName]=useState('');
     const [specifications,setSpecifications]=useState('');
     const [price,setPrice]=useState('');
     const [image,setImage]=useState('');
     const getRoom=async (id)=>{
         try{
-      const response=await axios.get('https://reservation-h7rxq6cut-hicode-byte.vercel.app/room/'+id);
+      const response=await axios.get('https://reservation-zeta.vercel.app/room/'+id);
       const data=response.data;
       setName(data.name)
       setSpecifications(data.specifications)
       setPrice(data.price)
       setImage(data.image)
       setLoading(false)
-        }
-        catch(e){
-        }
+
+      const token = await AsyncStorage.getItem('token');
+      if(token){
+       setLoggedIn(true)
+       }
+       }
+          catch(e){
+          }
       }
       useEffect(()=>{getRoom(route.params.rid)},[])
     const navigation = useNavigation();
@@ -61,12 +67,19 @@ const Bookable = ({route}) => {
         <Text> | <MaterialIcons name="free-breakfast" style={{marginTop:10}} size={21} color="black" />Breakfast</Text>
         </Text>
         <View>
+        {isLoggedIn?
         <TouchableOpacity
             style={styles.button}
             onPress={()=>navigation.navigate("Reserve",{rid:route.params.rid,check_in_date:route.params.cindate,check_out_date:route.params.coutdate})}
         >
         <Text>Reserve a stay</Text>
-        </TouchableOpacity>
+        </TouchableOpacity>:
+        <TouchableOpacity
+            style={styles.button}
+            onPress={()=>navigation.navigate("Login")}
+        >
+        <Text>Login</Text>
+        </TouchableOpacity>}
         </View>
         </View>
       )}

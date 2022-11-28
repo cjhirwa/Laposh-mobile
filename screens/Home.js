@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Heading from '../components/heading';
-import { View, Text, StyleSheet, Button, TextInput, Picker,Alert, TouchableOpacity } from 'react-native'
+import { View, Text,SafeAreaView, StyleSheet, Button, TextInput, Picker,Alert, TouchableOpacity } from 'react-native'
 import DateTimePicker from '@react-native-community/datetimepicker'
 import { useNavigation } from '@react-navigation/native'
 import styles from '../assets/css/styles';
@@ -18,11 +18,9 @@ function useInput() {
     };
 
     const onChange = (event, selectedDate) => {
-      // const datePart = selectedDate.toISOString("dd/mm/yyyy").split( "T" );
         const currentDate = selectedDate || date
         setShow(Platform.OS === 'ios');
         setDate(currentDate);
-        console.log(currentDate)
     }
     return {
         date,
@@ -78,13 +76,13 @@ const Home = () => {
 
     }
 return (
-        <View >
+        <SafeAreaView >
         <Heading/>
         <View style={[styles.check, styles.elevation]}>
         <Text style={styles.heading}>Check in date</Text>
            <TouchableOpacity             
               onPress={input.showDatepicker}
-              style={styles.input}
+              style={styles.dateinput}
               >
               {input.show && (
                    <DateTimePicker
@@ -94,16 +92,16 @@ return (
                    mode={input.mode}
                    is24Hour={true}
                    display="default"
+                   style={{width: "50%", marginTop: 15}}
                    onChange={input.onChange}
                    />
                )}
                <Text>{input.date.getFullYear()}{"-"}{input.date.getMonth()+1}{"-"}{input.date.getDate()}</Text>
                </TouchableOpacity>
                
-
                <TouchableOpacity              
               onPress={input2.showDatepicker}
-              style={styles.input}
+              style={styles.dateinput}
               >
               {input2.show && (
                    <DateTimePicker
@@ -113,6 +111,7 @@ return (
                    mode={input2.mode}
                    is24Hour={true}
                    display="default"
+                   style={{width: "50%", marginTop: 15}}
                    onChange={input2.onChange}
                     />
               )}
@@ -124,7 +123,7 @@ return (
                         <Text>Check Availability</Text>
                     </TouchableOpacity>
               </View>
-              </View>
+              </SafeAreaView>
   )
 }
 export default Home;

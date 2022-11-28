@@ -13,7 +13,6 @@ const [isLoading,setLoading]=useState(true);
 
   const getRooms=async ()=>{
     try{
-      console.log(url)
       const response=await axios.get(url);
       setRooms(response.data)
       setLoading(false)

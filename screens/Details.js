@@ -18,7 +18,7 @@ const Details = ({route}) => {
     const [image,setImage]=useState('');
     const getRoom=async (id)=>{
         try{
-      const response=await axios.get('https://reservation-h7rxq6cut-hicode-byte.vercel.app/room/'+id);
+      const response=await axios.get('https://reservation-zeta.vercel.app/room/'+id);
       const data=response.data;
       setName(data.name)
       setSpecifications(data.specifications)

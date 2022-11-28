@@ -11,6 +11,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'react-native'
 import Reserve from './screens/Reserve';
 import Bookable from './screens/Bookable';
+import Payment from './screens/Payment';
 
 const Stack = createStackNavigator();
 export default function App() {
@@ -20,6 +21,9 @@ export default function App() {
 
       <Stack.Navigator>
 
+      <Stack.Screen  name="Payment" component={Payment} 
+        options={{  headerShown: Platform.OS === 'ios' ? true : false }}
+      />
       <Stack.Screen  name="HomeTab" component={HomeTab} 
         options={{  headerShown: false }}
       /> 
@@ -35,6 +39,7 @@ export default function App() {
       <Stack.Screen  name="Reserve" component={Reserve} 
         options={{  headerShown: Platform.OS === 'ios' ? true : false }}
       />
+
       <Stack.Screen  name="ReserveTab" component={ReserveTab} 
         options={{  headerShown: Platform.OS === 'ios' ? true : false }}
       />

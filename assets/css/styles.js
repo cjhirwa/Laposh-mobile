@@ -91,7 +91,8 @@ fontWeight: '600',
         backgroundColor:'rgb(228, 228, 228)',
         paddingHorizontal:5,
         width:width,
-        paddingBottom:160
+        paddingBottom:160,
+        marginTop:Platform.OS === 'ios' ?20:0
       },
       mainForm: {
         backgroundColor: COLORS.white,
@@ -246,10 +247,9 @@ marginLeft:20
     width:"100%"
 },
       button:{
-        paddingVertical:15,
+        paddingVertical:10,
         alignItems: 'center',
         justifyContent: 'center',
-        paddingVertical: 5,
         paddingHorizontal: 50,
         borderRadius: 4,
         elevation: 10,
@@ -338,12 +338,29 @@ marginLeft:20
                     paddingHorizontal: 20,
                     borderRadius: 4,
                     height:45,
-                    elevation: 10,
-
+                    
+                    elevation: Platform.OS === 'ios' ? 0:20,
+                    borderColor:Platform.OS === 'ios' ? COLORS.main:COLORS.white,
+                    borderWidth:1,
                     fontSize:16,
                     fontWeight:'bold',
                     backgroundColor: COLORS.white,
                         },
+                    dateinput:{
+                          marginBottom:15,
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          paddingVertical: 10,
+                          paddingHorizontal: 20,
+                          borderRadius: 4,
+                          height:Platform.OS === 'ios' ?80:45,
+                          elevation: Platform.OS === 'ios' ? 0:20,
+                          borderColor:Platform.OS === 'ios' ? COLORS.main:COLORS.white,
+                          borderWidth:1,
+                          fontSize:16,
+                          fontWeight:'bold',
+                          backgroundColor: COLORS.white,
+                              },
                    variableInput:{
                           marginBottom:15,
                           alignItems: 'center',
@@ -352,6 +369,8 @@ marginLeft:20
                           paddingHorizontal: 20,
                           borderRadius: 4,
                           elevation: 10,
+                          borderColor:Platform.OS === 'ios' ? COLORS.main:COLORS.white,
+                          borderWidth:1,
                           fontSize:16,
                           fontWeight:'bold',
                           backgroundColor: COLORS.white,

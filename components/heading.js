@@ -60,8 +60,7 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius:10,
         borderBottomRightRadius:10,
         marginBottom:20,
-        paddingBottom:10
-
+        paddingBottom:10,
     },
     titlebar:{
         backgroundColor:COLORS.white,

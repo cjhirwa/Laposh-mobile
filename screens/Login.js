@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
- import Toast from 'react-native-simple-toast';
 import { AsyncStorage } from 'react-native';
-import { TextInput, Text, ScrollView,View, TouchableOpacity,ActivityIndicator,Alert,Image,ToastAndroid,} from 'react-native'
+import { TextInput, Text, ScrollView,View, TouchableOpacity,ActivityIndicator,Alert,Image} from 'react-native'
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native'
 import styles from '../assets/css/styles';
@@ -82,7 +81,7 @@ console.log(e)
         </View> 
         <Text style={styles.subtitle}>Welcome Back</Text>
         <View style={styles.line}/>
-      <Text style={styles.heading}>Username</Text>
+      <Text style={styles.heading}>Email</Text>
           <TextInput 
            onChangeText={(text)=>setEmail(text)}
           style={styles.input}
