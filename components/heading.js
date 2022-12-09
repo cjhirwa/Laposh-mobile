@@ -32,7 +32,7 @@ const Heading = () => {
         <TouchableOpacity
         onPress={()=>navigation.navigate('Profile')}
         >
-        <FontAwesome5 name="user-circle" size={27} color="black" />
+        <FontAwesome5 name="user-circle" size={30} color="black" />
         </TouchableOpacity>
         </View>
         :<View></View>
@@ -55,11 +55,9 @@ const styles = StyleSheet.create({
         backgroundColor:COLORS.white,
         paddingVertical:5,
         borderTopWidth:1,
-        shadowColor: '#52006A',  
-        elevation: 40,
+        shadowColor: '#52006A',
         borderBottomLeftRadius:10,
         borderBottomRightRadius:10,
-        marginBottom:20,
         paddingBottom:10,
     },
     titlebar:{
@@ -76,7 +74,6 @@ const styles = StyleSheet.create({
         width:80,
         height:40,
         borderRadius:5,
-        elevation: 20, 
     },
 
     search:{
@@ -86,7 +83,7 @@ const styles = StyleSheet.create({
         marginTop:5,
         backgroundColor:COLORS.white,
         width:"90%",
-        paddingVertical:10,
+        paddingVertical:5,
         paddingHorizontal:20,
         borderRadius:20,
         borderWidth:1,

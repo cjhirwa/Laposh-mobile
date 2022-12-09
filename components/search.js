@@ -1,5 +1,6 @@
-import { Text, View,TextInput,StyleSheet } from 'react-native';
 import React from 'react';
+import { Text, View,TextInput,StyleSheet } from 'react-native';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 import COLORS from '../assets/colors/colors';
 
@@ -29,5 +30,9 @@ const styles=StyleSheet.create({
     input:{
         paddingLeft:8,
         fontSize:14,
+        borderLeftWidth:1,
+        borderLeftColor:"black",
+        borderTopLeftRadius:10,
+        borderBottomLeftRadius:10
     }
 })

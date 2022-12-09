@@ -31,7 +31,7 @@ const Header = () => {
         <TouchableOpacity
         onPress={()=>navigation.navigate('Profile')}
         >
-        <FontAwesome5 name="user-circle" size={27} color="black" />
+        <FontAwesome5 name="user-circle" size={30} color="black" />
         </TouchableOpacity>
         </View>
         :<View></View>
@@ -59,9 +59,8 @@ const styles = StyleSheet.create({
         elevation: 20
     },
     logo:{
-        width:80,
-        height:40,
-        borderRadius:10,
+        width:100,
+        height:55,
         elevation: 20, 
     }
 })

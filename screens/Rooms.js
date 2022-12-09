@@ -3,7 +3,8 @@ import axios from 'axios';
 import { Image,Text, View, TouchableOpacity, SafeAreaView,ActivityIndicator,FlatList} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import styles from '../assets/css/styles';
-import Heading from '../components/heading';
+import Header from '../components/header';
+import Search from '../components/search';
 const Rooms = () => {
 const url='https://reservation-zeta.vercel.app/rooms';
 let [rooms,setRooms]=useState([]);
@@ -23,7 +24,8 @@ const [isLoading,setLoading]=useState(true);
     const navigation = useNavigation();
     return(
       <SafeAreaView style={styles.container}>
-        <Heading />
+        <Header />
+        <Search/>
         {isLoading? 
           <View style= {styles.activityIndicator}>
             <ActivityIndicator

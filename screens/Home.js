@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import Heading from '../components/heading';
-import { View, Text,SafeAreaView, StyleSheet, Button, TextInput, Picker,Alert, TouchableOpacity } from 'react-native'
+import Header from '../components/header';
+import { View, Text,SafeAreaView, StyleSheet, Button, TextInput, Picker,Alert, TouchableOpacity,ImageBackground } from 'react-native'
 import DateTimePicker from '@react-native-community/datetimepicker'
 import { useNavigation } from '@react-navigation/native'
 import styles from '../assets/css/styles';
@@ -77,9 +77,10 @@ const Home = () => {
     }
 return (
         <SafeAreaView >
-        <Heading/>
+        <Header/>
+        <ImageBackground source={require('../assets/bg.jpg')} style={styles.imagebg}>
         <View style={[styles.check, styles.elevation]}>
-        <Text style={styles.heading}>Check in date</Text>
+        <Text style={styles.heading}>Arrival</Text>
            <TouchableOpacity             
               onPress={input.showDatepicker}
               style={styles.dateinput}
@@ -98,7 +99,7 @@ return (
                )}
                <Text>{input.date.getFullYear()}{"-"}{input.date.getMonth()+1}{"-"}{input.date.getDate()}</Text>
                </TouchableOpacity>
-               
+               <Text style={styles.heading}>Departure</Text>
                <TouchableOpacity              
               onPress={input2.showDatepicker}
               style={styles.dateinput}
@@ -123,6 +124,7 @@ return (
                         <Text>Check Availability</Text>
                     </TouchableOpacity>
               </View>
+              </ImageBackground>
               </SafeAreaView>
   )
 }

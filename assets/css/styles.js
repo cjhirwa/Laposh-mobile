@@ -15,6 +15,9 @@ const styles = StyleSheet.create({
       backgroundColor:COLORS.bg,
       marginHorizontal:-10
    },
+   imagebg:{
+    height:height
+   },
     account:{
       marginVertical:20,
       marginHorizontal:30,
@@ -225,6 +228,7 @@ marginLeft:20
           fontSize:70,
           fontWeight:'bold',
           marginTop:10,
+          elevation:40,
           backgroundColor: COLORS.secondary,
           borderColor:COLORS.main,
           borderWidth:1,
@@ -278,7 +282,7 @@ marginLeft:20
                 },
                 mainlogo:{
                   width:"50%",
-                  height:80,
+                  height:90,
                   marginHorizontal:"25%",
                 },
                 loginForm: {
@@ -292,13 +296,12 @@ marginLeft:20
                 check: {
                   borderRadius: 5,
                   backgroundColor: COLORS.white,
-                  paddingVertical: 10,
-                  paddingHorizontal: 15,
-                  marginTop:30,
+                  paddingVertical: 50,
+                  paddingHorizontal: 20,
+                  marginTop:90,
                   width:"80%",
                   marginHorizontal:"10%",
-                  borderWidth:1,
-                  borderColor:COLORS.main
+                  elevation:40,
                 },
                 miniForm: {
                   backgroundColor: COLORS.white,
