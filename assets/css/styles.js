@@ -315,9 +315,10 @@ marginLeft:20
                   marginTop:30,
                 },
                 mainlogo:{
-                  width:"50%",
-                  height:90,
-                  marginHorizontal:"25%",
+                  width:"70%",
+                  height:80,
+                  marginHorizontal:"12%",
+                  marginBottom:20,
                 },
                 loginForm: {
                   borderRadius: 5,

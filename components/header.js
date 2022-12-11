@@ -50,6 +50,8 @@ const styles = StyleSheet.create({
         paddingVertical:12,
         paddingHorizontal:8,
         flexDirection:'row',
+        borderTopWidth:2,
+        borderTopColor:COLORS.main,
         justifyContent:'space-between',
         paddingLeft:10,
         paddingRight:20,
