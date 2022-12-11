@@ -7,6 +7,10 @@ const styles = StyleSheet.create({
       position:'relative',
       backgroundColor:COLORS.white
     },
+    search:{
+      paddingBottom:10,
+      backgroundColor:'rgb(228, 228, 228)'
+  },
     activityIndicator: {
       flex: 1,
       justifyContent: 'center',
@@ -60,6 +64,19 @@ fontWeight: '600',
       marginBottom: 5,
       color:COLORS.main
     },
+    name: {
+      fontSize: 18,
+      fontWeight: '600',
+      marginBottom: 5,
+      color:'black'
+    },
+    specs: {
+      padding:5,
+      fontStyle:'italic',
+      fontSize: 14,
+      marginBottom: 5,
+      color:'black'
+    },
     price: {
       fontSize: 18,
       fontWeight: '600',
@@ -107,6 +124,17 @@ fontWeight: '600',
         width:width-10,
         marginLeft:1,
       },
+      detailsForm: {
+        backgroundColor: COLORS.white,
+        borderRadius: 5,
+        marginTop:10,
+        marginBottom:5,
+        padding:5,
+        paddingBottom:15,
+        width:width-10,
+        minHeight:height-70,
+        marginLeft:1,
+      },
       profile: {
         backgroundColor: COLORS.white,
         borderRadius: 5,
@@ -123,7 +151,7 @@ fontWeight: '600',
         marginBottom:5,
         padding:5,
         flexDirection:'row',
-        paddingBottom:15,
+        paddingVertical:10,
         width:width-10,
         marginLeft:1,
       },
@@ -170,13 +198,19 @@ fontWeight: '600',
         borderRadius:20
       },
       additional:{
-marginVertical:10,
-paddingHorizontal:10,
-color:COLORS.main
+        marginVertical:10,
+        paddingHorizontal:10,
+        color:COLORS.main
       },
+      specials:{
+        marginVertical:10,
+        flexDirection:'row',
+        flexWrap:'wrap',
+        color:COLORS.main
+              },
       image:{
         width:'45%',
-        height:100,
+        height:110,
         borderRadius:5,
       },
 
@@ -213,7 +247,7 @@ marginLeft:20
       },
       details:{
         marginTop:20,
-        paddingHorizontal:20,
+        paddingHorizontal:5,
         width:"100%",
         flexDirection:'row',
         flexWrap:'wrap',

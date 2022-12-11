@@ -5,8 +5,7 @@ import { Image,Text,ScrollView, View, TouchableOpacity,ActivityIndicator} from '
 import { useNavigation } from '@react-navigation/native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { FontAwesome } from '@expo/vector-icons';
-import { MaterialCommunityIcons } from '@expo/vector-icons'; 
-import { MaterialIcons } from '@expo/vector-icons'; 
+import { MaterialCommunityIcons } from '@expo/vector-icons';  
 import styles from '../assets/css/styles';
 import COLORS from '../assets/colors/colors';
 import Header from '../components/header';
@@ -33,18 +32,20 @@ const Details = ({route}) => {
     const navigation = useNavigation();
     return(
         <ScrollView>
-        <Header/>
+        
       <View style={styles.section}>
-      {isLoading?<ActivityIndicator style={styles.activityIndicator}
-size="large" color="#00ff00"
-      />:(
-      <View style={styles.mainForm}>
+      {isLoading? <View style= {styles.activityIndicator}>
+            <ActivityIndicator
+            style= {styles.indicator}
+            size={70}
+            /><Text style={styles.signup}>Loading...</Text></View>:(
+      <View style={styles.detailsForm}>
       
         <Image style={styles.roomimage} source={{uri: image}} />
         <View style={styles.details}>
             <Text style={styles.heading}>{name}</Text>
-            <Text style={styles.price} >Price: $ {price} /day</Text>
-            <Text style={styles.heading}>{specifications}</Text>
+            <Text style={styles.price} >$ {price} /hour</Text>
+            <Text style={styles.specs}>{specifications}</Text>
             
             
         </View>
@@ -52,11 +53,11 @@ size="large" color="#00ff00"
         <Ionicons name="ios-wifi" size={21} color={COLORS.main} />
         <Text> Free wifi</Text>
         
-        <Text> | <MaterialCommunityIcons name="fridge-outline" size={21} color="black" /> Fridge</Text>
+        <Text> | <MaterialCommunityIcons name="fridge-outline" size={19} color="black" /> Fridge</Text>
 
         
-        <Text> | <FontAwesome name="tv" size={21} color="black" /> Flat TV</Text>
-        <Text> | <MaterialIcons name="free-breakfast" style={{marginTop:10}} size={21} color="black" />Breakfast</Text>
+        <Text> | <FontAwesome name="tv" size={19} color="black" /> Flat TV</Text>
+        <Text> | Italian breakfast</Text>
         </Text>
         <View>
         <TouchableOpacity
@@ -70,6 +71,7 @@ size="large" color="#00ff00"
       )}
         </View>
         </ScrollView>
+        
     )}
 
 export default Details

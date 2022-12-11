@@ -27,7 +27,7 @@ const Header = () => {
         </View>
 
         {isLoggedIn?
-        <View>
+        <View style={{marginTop:10}}>
         <TouchableOpacity
         onPress={()=>navigation.navigate('Profile')}
         >
@@ -56,11 +56,12 @@ const styles = StyleSheet.create({
         borderTopColor:COLORS.main,
         borderTopWidth:1,
         shadowColor: '#52006A',  
-        elevation: 20
+        elevation: 20,
+        
     },
     logo:{
         width:100,
-        height:55,
+        height:50,
         elevation: 20, 
     }
 })

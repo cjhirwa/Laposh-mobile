@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Header from '../components/header';
-import { View, Text,SafeAreaView, StyleSheet, Button, TextInput, Picker,Alert, TouchableOpacity,ImageBackground } from 'react-native'
+import { View, Text, SafeAreaView, Alert, TouchableOpacity,ImageBackground } from 'react-native'
 import DateTimePicker from '@react-native-community/datetimepicker'
 import { useNavigation } from '@react-navigation/native'
 import styles from '../assets/css/styles';

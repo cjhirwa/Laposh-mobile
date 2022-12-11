@@ -15,7 +15,11 @@ const Reservations = () => {
 const profile_url='https://reservation-zeta.vercel.app/customer/me/profile';
 const reservations_url='https://reservation-zeta.vercel.app/me/reservations';
 
-
+const formatDate=(item)=>{
+  let date=new Date(item)
+  const fDate=date.toString().split(' ')
+  return fDate[0]+" "+fDate[1]+" "+fDate[2]+" "+fDate[3]
+}
   const getData=async ()=>{
     try{
         const token=await AsyncStorage.getItem('token');
@@ -38,7 +42,7 @@ const reservations_url='https://reservation-zeta.vercel.app/me/reservations';
     }
   }
 
-  useEffect(()=>{getData()});
+  useEffect(()=>{getData()},[]);
     const navigation = useNavigation();
     return(
       <SafeAreaView>
@@ -65,15 +69,19 @@ const reservations_url='https://reservation-zeta.vercel.app/me/reservations';
             </View>
             <View style={styles.label}>
             <FontAwesome name="bed"  size={24} color="black"/>
-            <Text style={styles.titles}>{item.room_id}{'\n'}</Text>
+            <Text style={styles.titles}>{item.room_name}{'\n'}</Text>
             </View>
             <View style={styles.label}>
             <FontAwesome name="calendar-check-o" size={24} color="black" />
-            <Text style={styles.titles}>{item.checkInDate}{'\n'}</Text>
+            <Text style={styles.titles}>{formatDate(item.checkInDate)}{'\n'}</Text>
         </View>
         <View style={styles.label}>
         <MaterialCommunityIcons name="clock-check-outline" size={24} color="black" />
-            <Text style={styles.titles}>{item.checkOutDate}{'\n'}</Text>
+            <Text style={styles.titles}>{formatDate(item.checkOutDate)}{'\n'}</Text>
+        </View>
+        <View style={styles.label}>
+        <MaterialCommunityIcons name="clock-check-outline" size={24} color="black" />
+            <Text style={styles.titles}>{item.status}{'\n'}</Text>
         </View>
         </View>
         }/>
