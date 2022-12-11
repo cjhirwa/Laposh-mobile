@@ -8,7 +8,6 @@ import { FontAwesome } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';  
 import styles from '../assets/css/styles';
 import COLORS from '../assets/colors/colors';
-import Header from '../components/header';
 const Details = ({route}) => {
     const [isLoading,setLoading]=useState(true);
     const [name,setName]=useState('');
@@ -44,7 +43,7 @@ const Details = ({route}) => {
         <Image style={styles.roomimage} source={{uri: image}} />
         <View style={styles.details}>
             <Text style={styles.heading}>{name}</Text>
-            <Text style={styles.price} >$ {price} /hour</Text>
+            <Text style={styles.price} >$ {price} /day</Text>
             <Text style={styles.specs}>{specifications}</Text>
             
             

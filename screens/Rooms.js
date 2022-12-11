@@ -84,7 +84,7 @@ const Rooms = () => {
             <Text style={styles.name}>{item.name}</Text>
             </View>
             <View>
-            <Text style={styles.price} ><Text>$ </Text>{item.price}<Text> /hour</Text></Text>
+            <Text style={styles.price} ><Text>$ </Text>{item.price}<Text> /day</Text></Text>
             </View>
             <View style={styles.specials}>
               <Text> Free wifi</Text>

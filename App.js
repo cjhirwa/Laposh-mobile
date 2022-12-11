@@ -21,9 +21,9 @@ export default function App() {
 
       <Stack.Navigator>
 
-      {/* <Stack.Screen  name="Payment" component={Payment} 
+      <Stack.Screen  name="Payment" component={Payment} 
         options={{  headerShown: Platform.OS === 'ios' ? true : false }}
-      /> */}
+      />
       <Stack.Screen  name="HomeTab" component={HomeTab} 
         options={{  headerShown: false }}
       /> 

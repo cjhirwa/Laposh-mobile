@@ -1,9 +1,11 @@
-module.exports = function(api) {
-  api.cache(true);
+
+module.exports = function() {
   return {
     presets: ['babel-preset-expo'],
     plugins: [
-      ["module:react-native-dotenv", {
+      [
+        "module:react-native-dotenv", 
+      {
         "envName": "APP_ENV",
         "moduleName": "@env",
         "path": ".env",

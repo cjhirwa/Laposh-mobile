@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import { View, Text,TextInput,Button, StyleSheet } from 'react-native';
+import { View, Text,TextInput,Button, StyleSheet, Alert} from 'react-native';
 import axios from 'axios';
 import { useStripe } from '@stripe/stripe-react-native';
 
@@ -10,7 +10,8 @@ const PaymentComponent = ({total,products}) => {
 
     const subscribe = async () =>{
         try {
-            const res = await axios.post("https://electronic-shop.onrender.com/api/checkout/stripePay",{name,amount});
+            const res = await axios.post("https://reservation-zeta.vercel.app/reserve/pay",{name,amount});
+            console.log(res)
             const data = await res.data;
             const { clientSecret } = data;
             console.log(clientSecret)
@@ -33,7 +34,7 @@ const PaymentComponent = ({total,products}) => {
             const ordersData = order.data;
             console.log(ordersData)
         } catch (error) {
-            console.log(error.message);
+            // console.log(error.message);
         }
     }
   return (

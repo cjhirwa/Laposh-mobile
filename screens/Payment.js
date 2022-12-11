@@ -5,17 +5,17 @@ import {PUBLISHABLE_KEY} from '@env';
 import PaymentComponent from '../components/PaymentComponent';
 
 
-const Payment = ({route}) => {
-  const total = route.params.total;
-  const products = route.params.cart;
-
+const Payment = () => {
+  // const total = route.params.total;
+  const total=340
+ // const products = route.params.cart;
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Payment</Text>
       <StripeProvider
       publishableKey={PUBLISHABLE_KEY}
       merchantIdentifier={`merchant.com.Native`}>
-        <PaymentComponent total={total} products={products} />
+        <PaymentComponent total={total} />
       </StripeProvider>
     </View>
   )
