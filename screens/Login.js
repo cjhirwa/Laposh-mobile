@@ -3,7 +3,8 @@ import { AsyncStorage } from 'react-native';
 import { TextInput, Text, ScrollView,View, TouchableOpacity,ActivityIndicator,Alert,Image} from 'react-native'
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native'
-import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { Feather } from '@expo/vector-icons'; 
+import { AntDesign } from '@expo/vector-icons'; 
 import styles from '../assets/css/styles';
 const Login = () => {
    const navigation = useNavigation();
@@ -54,7 +55,6 @@ const Login = () => {
             ],
             { cancelable: false}
           )
-          console.log(response.data.error)
         }
         else{
           await AsyncStorage.setItem('token',response.data.token);
@@ -63,7 +63,6 @@ const Login = () => {
         }
           }
           catch(e){
-console.log(e)
           }
         }}
     return (
@@ -81,25 +80,35 @@ console.log(e)
       <View>
             <Image style={styles.mainlogo} source={require("../assets/icon.png")} />
         </View> 
+
         <Text style={styles.subtitle}>Welcome Back</Text>
         <View style={styles.line}/>
-        {/* <View style={}> */}
-      <Text style={styles.heading}>Email</Text>
-      <MaterialCommunityIcons name="form-textbox-password" size={24} color="black" />
-          {/* <TextInput 
+
+        <View style={styles.inputs}>
+      <View style={styles.icons}>
+      <Feather name="mail" size={24} color="black" />
+      </View>
+      <View style={{flex:8}}>
+          <TextInput 
            onChangeText={(text)=>setEmail(text)}
-          style={styles.input}
-          /> */}
-           {/* </View> */}
-      <Text style={styles.heading}>
-            Password
-          </Text>
+           placeholder="email"
+          style={styles.input_login}
+          />
+          </View>
+           </View>
+      <View style={styles.inputs}>
+      <View style={styles.icons}>
+      <AntDesign name="lock" size={32} color="black" />
+      </View>
+      <View style={{flex:8}}>
           <TextInput 
            onChangeText={(text)=>setPassword(text)}
+           placeholder="password"
           secureTextEntry={true} 
-          style={styles.input}
+          style={styles.input_login}
           >
           </TextInput>
+          </View></View>
           <TouchableOpacity
         style={styles.button}
         onPress={()=>Signin()}

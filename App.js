@@ -12,6 +12,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'react-native'
 import Reserve from './screens/Reserve';
 import Bookable from './screens/Bookable';
+import DeleteAccount from "./screens/DeleteAccount";
 
 const Stack = createStackNavigator();
 export default function App() {
@@ -39,26 +40,29 @@ export default function App() {
         options={{  headerShown: false }}
       />
       <Stack.Screen  name="Profile" component={Profile} 
-        options={{  headerShown: true }}
+        options={{  headerShown: true, headerBackTitleVisible:true, headerTitleStyle:{color:'white'}, headerBackTitle:"Back" }}
       /> 
       <Stack.Screen  name="List" component={List} 
-        options={{  headerShown: true}}
+        options={{  headerShown: true, headerBackTitleVisible:true, headerTitleStyle:{color:'white'}, headerBackTitle:"Back"}}
       />
       <Stack.Screen  name="Room" component={Bookable} 
-        options={{  headerShown: true }}
+        options={{  headerShown: true, headerBackTitleVisible:true, headerTitleStyle:{color:'white'}, headerBackTitle:"Back" }}
       />
       <Stack.Screen  name="Reserve" component={Reserve} 
-        options={{  headerShown: true}}
+        options={{  headerShown: true, headerBackTitleVisible:true, headerTitleStyle:{color:'white'}, headerBackTitle:"Back"}}
       />
 
       <Stack.Screen  name="ReserveTab" component={ReserveTab} 
         options={{  headerShown: true}}
       />
        <Stack.Screen name={'Details'} component={Details}
-        options={{  headerShown: true }}
+        options={{  headerShown: true, headerBackTitleVisible:true, headerTitleStyle:{color:'white'}, headerBackTitle:"Back" }}
             />
       <Stack.Screen  name="Signup" component={Signup} 
-        options={{  headerShown: true }}
+        options={{  headerShown: true, headerBackTitleVisible:true, headerTitleStyle:{color:'white'}, headerBackTitle:"Back" }}
+      />
+      <Stack.Screen  name="DeleteAccount" component={DeleteAccount} 
+        options={{  headerShown: true, headerBackTitleVisible:true, headerTitleStyle:{color:'white'}, headerBackTitle:"Back" }}
       />
       </Stack.Navigator>
     </NavigationContainer>

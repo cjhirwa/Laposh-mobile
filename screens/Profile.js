@@ -2,12 +2,12 @@ import React, {useState,useEffect} from 'react'
 import { AsyncStorage } from 'react-native';
 import { ActivityIndicator, FlatList,Text,SafeAreaView, View,TouchableOpacity} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import {DevSettings} from 'react-native';
-import axios from 'axios';
-import Ionicons from '@expo/vector-icons/Ionicons';
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import { FontAwesome } from '@expo/vector-icons'; 
 import { Octicons } from '@expo/vector-icons';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { AntDesign } from '@expo/vector-icons'; 
+import axios from 'axios';
 import styles from '../assets/css/styles';
 import Header from '../components/header';
 const Profile = () => {
@@ -41,26 +41,30 @@ const reservations_url='https://reservation-zeta.vercel.app/me/reservations';
         setLoading(false)
     }
     catch(e){
-        console.log(e)
     }
+  }
+  const formatDate=(item)=>{
+    let date=new Date(item)
+    const fDate=date.toString().split(' ')
+    return fDate[0]+" "+fDate[1]+" "+fDate[2]+" "+fDate[3]
   }
   const removeToken=async()=>{
     try{
+      setLoading(true)
       const logout_url='https://reservation-zeta.vercel.app/logout'
         const token=await AsyncStorage.getItem('token');
-        await fetch(logout_url,{
-          method: 'POST',
+        await axios.post(logout_url,{
           headers: {
             Authorization: `Bearer ${token}`
           },
         }
         );
         await AsyncStorage.removeItem('token');
-        navigation.navigate('Home')
+        setLoading(false)
+        navigation.navigate("Home")
         
     }
     catch(e){
-       console.log(e) 
     }
   }
   useEffect(()=>{getData()},[]);
@@ -91,6 +95,16 @@ const reservations_url='https://reservation-zeta.vercel.app/me/reservations';
       >
       <Text style={styles.signup}>Logout</Text>
       </TouchableOpacity>
+      
+        </View>
+        <View style={styles.label}>
+        <AntDesign name="deleteuser" size={24} color="black" />
+        <TouchableOpacity
+      onPress={()=>{navigation.navigate('DeleteAccount')}}
+      >
+      <Text style={styles.signup}>Delete My Account</Text>
+      </TouchableOpacity>
+      
         </View>
         
         </View>
@@ -107,8 +121,20 @@ const reservations_url='https://reservation-zeta.vercel.app/me/reservations';
             <Text style={styles.titles}>{item.reference}{'\n'}</Text>
             </View>
             <View style={styles.label}>
+            <FontAwesome name="bed"  size={24} color="black"/>
+            <Text style={styles.titles}>{item.room_name}{'\n'}</Text>
+            </View>
+            <View style={styles.label}>
             <FontAwesome name="calendar-check-o" size={24} color="black" />
-            <Text style={styles.titles}>{item.checkInDate}{'\n'}</Text>
+            <Text style={styles.titles}>{formatDate(item.checkInDate)}{'\n'}</Text>
+        </View>
+        <View style={styles.label}>
+        <MaterialCommunityIcons name="clock-check-outline" size={24} color="black" />
+            <Text style={styles.titles}>{formatDate(item.checkOutDate)}{'\n'}</Text>
+        </View>
+        <View style={styles.label}>
+        <MaterialCommunityIcons name="clock-check-outline" size={24} color="black" />
+            <Text style={styles.titles}>{item.status}{'\n'}</Text>
         </View>
         </View>
         }/>

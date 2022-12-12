@@ -38,7 +38,6 @@ const formatDate=(item)=>{
         setLoading(false)
     }
     catch(e){
-        console.log(e)
     }
   }
 

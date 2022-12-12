@@ -53,34 +53,44 @@ const Home = () => {
           { cancelable: false}
         )
       }
-      else if(input2 < input)
+      else if(input2.date.getFullYear()==input.date.getFullYear())
+      {
+        if(input2.date.getMonth()<input.date.getMonth())
+        Alert.alert(
+          'Warning',
+          'Check out date must be greater than or equal check in date! (check months)',
+          { cancelable: true}
+        )
+        else if(input2.date.getMonth()==input.date.getMonth() && input2.date.getDate()<input.date.getDate()){
+          Alert.alert(
+            'Warning',
+            'Check out date must be greater than or equal to check in date! (check dates)',
+            { cancelable: true}
+          )
+        }
+        else{
+            navigation.navigate('List',{check_in_date:input.date.toISOString("dd/mm/yyyy").split( "T" )[0],check_out_date:input2.date.toISOString("dd/mm/yyyy").split( "T" )[0]})
+        }
+      }
+      else if(input2.date.getFullYear()<input.date.getFullYear())
       {
         Alert.alert(
           'Warning',
-          'Check out date must be greater than or equal check in date!',
-          [
-            {
-              text: 'Ok',
-              onPress: () =>{
-                navigation.navigate('Home')
-            }
-            },
-          ],
-          { cancelable: false}
+          'Check out date must be greater than or equal check in date (check on years)!',
+          { cancelable: true}
         )
       }
       else{
        navigation.navigate('List',{check_in_date:input.date.toISOString("dd/mm/yyyy").split( "T" )[0],check_out_date:input2.date.toISOString("dd/mm/yyyy").split( "T" )[0]})
        
       }
-
-    }
+      }    
 return (
         <SafeAreaView >
         <Header/>
         <ImageBackground source={require('../assets/bg.jpg')} style={styles.imagebg}>
         <View style={[styles.check, styles.elevation]}>
-        <Text style={styles.theading}>Check room availability</Text>
+        <Text style={styles.theading}>Check Room Availability</Text>
         <View style={styles.line}/>
         <Text style={styles.heading}>Arrival</Text>
            <TouchableOpacity             
@@ -95,6 +105,7 @@ return (
                    mode={input.mode}
                    is24Hour={true}
                    display="default"
+                   minimumDate={new Date()}
                    style={{width: "50%", marginTop: 15}}
                    onChange={input.onChange}
                    />
@@ -114,6 +125,7 @@ return (
                    mode={input2.mode}
                    is24Hour={true}
                    display="default"
+                   minimumDate={new Date()}
                    style={{width: "50%", marginTop: 15}}
                    onChange={input2.onChange}
                     />
@@ -123,7 +135,7 @@ return (
               <TouchableOpacity
                     style={styles.mainbutton}
                         onPress={() => goToList()}>
-                        <Text>Check Availability</Text>
+                        <Text style={styles.heading}>Check Availability</Text>
                     </TouchableOpacity>
               </View>
               </ImageBackground>

@@ -7,6 +7,13 @@ const styles = StyleSheet.create({
       position:'relative',
       backgroundColor:COLORS.white
     },
+    scontainer: {
+      flex: 1,
+      position:'relative',
+      backgroundColor:COLORS.white,
+      marginTop:50,
+
+    },
     search:{
       paddingBottom:10,
       backgroundColor:'rgb(228, 228, 228)'
@@ -26,6 +33,25 @@ const styles = StyleSheet.create({
       marginVertical:20,
       marginHorizontal:30,
       flexDirection:'row',
+    },
+    inputs:{
+      flexDirection:'row',
+      width:"100%",
+      flex:1
+    },
+    icons:{
+      flex:1,
+      borderColor:'red',
+      height:50,
+      padding:10,
+      marginLeft:10,
+      borderTopLeftRadius: 4,
+      borderBottomLeftRadius: 4,
+      elevation: Platform.OS === 'ios' ? 0:10,
+      borderColor:Platform.OS === 'ios' ? COLORS.main:COLORS.white,
+      borderTopWidth:1,
+      borderLeftWidth:1,
+      borderBottomWidth:1,
     },
     cover:{
 color:'#0083A3',
@@ -65,11 +91,11 @@ fontWeight: '600',
       color:COLORS.main
     },
     theading: {
-      fontSize: 21,
+      fontSize: 19,
       fontWeight: '600',
       marginBottom: 5,
-      marginHorizontal:"15%",
-      marginBottom:50,
+      marginHorizontal:"12%",
+      marginBottom:30,
       color:COLORS.main
     },
     name: {
@@ -120,7 +146,8 @@ fontWeight: '600',
         paddingHorizontal:5,
         width:width,
         paddingBottom:160,
-        marginTop:Platform.OS === 'ios' ?20:0
+        marginTop:Platform.OS === 'ios' ?20:0,
+        marginBottom:Platform.OS === 'ios' ?70:0
       },
       mainForm: {
         backgroundColor: COLORS.white,
@@ -286,6 +313,7 @@ marginLeft:20
     fontSize:70,
     fontWeight:'bold',
     marginTop:10,
+    height:50,
     backgroundColor: COLORS.secondary,
     borderColor:COLORS.main,
     borderWidth:1,
@@ -332,9 +360,25 @@ marginLeft:20
                 loginForm: {
                   borderRadius: 5,
                   backgroundColor: COLORS.white,
-                  paddingVertical: 10,
+                  paddingVertical: 30,
                   paddingHorizontal: 25,
-                  marginTop:30,
+                  marginTop:70,
+                  marginHorizontal:10
+                },        
+                signupForm: {
+                  borderRadius: 5,
+                  backgroundColor: COLORS.white,
+                  paddingVertical: 30,
+                  paddingHorizontal: 25,
+                  marginTop:10,
+                  marginHorizontal:10
+                },        
+                contactForm: {
+                  borderRadius: 5,
+                  backgroundColor: COLORS.white,
+                  paddingVertical: 50,
+                  paddingHorizontal: 25,
+                  marginTop:10,
                   marginHorizontal:10
                 },
                 check: {
@@ -342,7 +386,7 @@ marginLeft:20
                   backgroundColor: COLORS.white,
                   paddingVertical: 50,
                   paddingHorizontal: 20,
-                  marginTop:"35%",
+                  marginTop:"15%",
                   width:"80%",
                   marginHorizontal:"10%",
                   elevation:40,
@@ -369,6 +413,7 @@ marginLeft:20
                 subtitle:{
                   color:COLORS.main,
                   marginTop:40,
+                  marginBottom:40,
                   fontSize:24,
                   fontWeight:'bold',
                   textAlign:'center',
@@ -393,6 +438,24 @@ marginLeft:20
                     fontWeight:'bold',
                     backgroundColor: COLORS.white,
                         },
+                        input_login:{
+                          marginBottom:15,
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          paddingVertical: 10,
+                          paddingHorizontal: 10,
+                          borderTopRightRadius: 4,
+                          borderBottomRightRadius: 4,
+                          height:50,
+                          elevation: Platform.OS === 'ios' ? 0:10,
+                          borderColor:Platform.OS === 'ios' ? COLORS.main:COLORS.white,
+                          borderTopWidth:1,
+                          borderRightWidth:1,
+                          borderBottomWidth:1,
+                          fontSize:16,
+                          fontWeight:'bold',
+                          backgroundColor: COLORS.white,
+                              },
                     dateinput:{
                           marginBottom:15,
                           alignItems: 'center',
@@ -400,7 +463,7 @@ marginLeft:20
                           paddingVertical: 10,
                           paddingHorizontal: 20,
                           borderRadius: 4,
-                          height:Platform.OS === 'ios' ?80:45,
+                          height:Platform.OS === 'ios' ?70:45,
                           elevation: Platform.OS === 'ios' ? 0:20,
                           borderColor:Platform.OS === 'ios' ? COLORS.main:COLORS.white,
                           borderWidth:1,
@@ -418,6 +481,7 @@ marginLeft:20
                           elevation: 10,
                           borderColor:Platform.OS === 'ios' ? COLORS.main:COLORS.white,
                           borderWidth:1,
+                          minHeight:50,
                           fontSize:14,
                           fontWeight:'bold',
                           backgroundColor: COLORS.white,

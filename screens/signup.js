@@ -124,7 +124,7 @@ const Signup = () => {
             size={70}
             /><Text style={styles.signup}>We are creating your account...</Text></View>:(
       <ScrollView style={styles.main}>
-      <View style={[styles.loginForm, styles.elevation]}>
+      <View style={[styles.signupForm, styles.elevation]}>
       <View>
             <Image style={styles.mainlogo} source={require("../assets/icon.png")} />
         </View> 

@@ -47,7 +47,14 @@ const Rooms = () => {
     return(
       <SafeAreaView style={styles.container}>
         <Header />
-        <View  style={styles.search}>
+        {isLoading? 
+          <View style= {styles.activityIndicator}>
+            <ActivityIndicator
+            style= {styles.indicator}
+            size={70}
+            /><Text style={styles.signup}>Loading rooms...</Text></View>:(
+              <View>
+              <View  style={styles.search}>
         <SearchBar
           round
           lightTheme
@@ -63,12 +70,6 @@ const Rooms = () => {
          
         />
         </View>
-        {isLoading? 
-          <View style= {styles.activityIndicator}>
-            <ActivityIndicator
-            style= {styles.indicator}
-            size={70}
-            /><Text style={styles.signup}>Loading rooms...</Text></View>:(
         <View style={styles.list}>
         <FlatList
         data={filteredRooms}
@@ -98,7 +99,7 @@ const Rooms = () => {
         }
       />   
       </View>
-     
+      </View>
       )}
         </SafeAreaView>
     )

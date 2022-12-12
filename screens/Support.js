@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import axios from 'axios';
-import { TextInput,ScrollView, Text,SafeAreaView,View, KeyboardAvoidingView,TouchableOpacity,Alert } from 'react-native'
+import { TextInput,ScrollView,ActivityIndicator, Text,SafeAreaView,View,Image, KeyboardAvoidingView,TouchableOpacity,Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import styles from '../assets/css/styles';
 import Header from '../components/header';
@@ -11,6 +11,7 @@ const Support = () => {
     const [email,setEmail]=useState('');
     const [message,setMessage]=useState('');
     const [isLoading,setLoading]=useState(false);
+    const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
 
     const sendRequest=async()=>{
       if(firstName=="" || lastName=="" || email=="" || message==""){
@@ -26,6 +27,13 @@ const Support = () => {
             },
           ],
           { cancelable: false}
+        )
+      }
+      else if(reg.test(email) === false){
+        Alert.alert(
+          'Warning',
+          `Email is invalid, correct it and try again`,
+          { cancelable: true}
         )
       }
       else{
@@ -83,20 +91,22 @@ const Support = () => {
 
     }
     return (
-      <SafeAreaView  style={styles.container}>
-      <Header/>
+      <ScrollView  style={styles.scontainer}>
       {isLoading?
           <View style= {styles.activityIndicator}>
             <ActivityIndicator
             style= {styles.indicator}
             size={70}
             /><Text style={styles.signup}>Sending...</Text></View>:(
-       <ScrollView>
       <View style={styles.section}>
-      <Text style={styles.subtitle}>
+      <View style={[styles.contactForm, styles.elevation]}>
+      <View>
+            <Image style={styles.mainlogo} source={require("../assets/icon.png")} />
+        </View> 
+        <Text style={styles.subtitle}>
             Support Request
           </Text>
-      <View style={[styles.loginForm, styles.elevation]}>
+          <View style={styles.line}/>
       <Text style={styles.heading}>First name</Text>
           <TextInput 
           style={styles.input}
@@ -108,6 +118,7 @@ const Support = () => {
           onChangeText={(text)=>setLastName(text)}
           />
         <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
       <Text style={styles.heading}>Email</Text>
           <TextInput 
@@ -122,18 +133,18 @@ const Support = () => {
         numberOfLines={10}
         onChangeText={(text)=>setMessage(text)}
           />
-      </KeyboardAvoidingView>
+      
       <TouchableOpacity
         style={styles.button}
         onPress={()=>sendRequest()}
       >
         <Text style={styles.heading}>Send</Text>
       </TouchableOpacity>
+      </KeyboardAvoidingView>
       </View>
       </View>
-      </ScrollView>
             )}
-      </SafeAreaView>
+            </ScrollView>
     )
 }
 export default Support
