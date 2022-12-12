@@ -64,6 +64,14 @@ fontWeight: '600',
       marginBottom: 5,
       color:COLORS.main
     },
+    theading: {
+      fontSize: 21,
+      fontWeight: '600',
+      marginBottom: 5,
+      marginHorizontal:"15%",
+      marginBottom:50,
+      color:COLORS.main
+    },
     name: {
       fontSize: 18,
       fontWeight: '600',
@@ -148,7 +156,7 @@ fontWeight: '600',
       rooms: {
         backgroundColor: COLORS.secondary,
         borderRadius: 5,
-        marginBottom:5,
+        marginBottom:2,
         padding:5,
         flexDirection:'row',
         paddingVertical:10,
@@ -291,15 +299,16 @@ marginLeft:20
         paddingHorizontal: 50,
         borderRadius: 4,
         elevation: 10,
-        fontSize:70,
+        fontSize:32,
         fontWeight:'bold',
         color:'white',
         marginTop:30,
         alignSelf:'center',
+        width:"100%",
         borderColor:COLORS.main,
         borderWidth:1,
         backgroundColor: COLORS.white,
-        borderRadius:20
+        borderRadius:20,
             },
                 section:{
                   backgroundColor:COLORS.bg,
@@ -333,7 +342,7 @@ marginLeft:20
                   backgroundColor: COLORS.white,
                   paddingVertical: 50,
                   paddingHorizontal: 20,
-                  marginTop:90,
+                  marginTop:"35%",
                   width:"80%",
                   marginHorizontal:"10%",
                   elevation:40,
@@ -341,9 +350,10 @@ marginLeft:20
                 miniForm: {
                   backgroundColor: COLORS.white,
                   paddingHorizontal: 10,
-                  marginTop:10,
+                  marginTop:30,
                   borderRadius: 5,
-                  marginHorizontal:10
+                  marginHorizontal:10,
+                  paddingVertical:10
                 },
                 line:{
                   marginBottom:30,
@@ -358,7 +368,7 @@ marginLeft:20
                 },
                 subtitle:{
                   color:COLORS.main,
-                  marginTop:10,
+                  marginTop:40,
                   fontSize:24,
                   fontWeight:'bold',
                   textAlign:'center',
@@ -375,9 +385,8 @@ marginLeft:20
                     paddingVertical: 10,
                     paddingHorizontal: 20,
                     borderRadius: 4,
-                    height:45,
-                    
-                    elevation: Platform.OS === 'ios' ? 0:20,
+                    height:50,
+                    elevation: Platform.OS === 'ios' ? 0:10,
                     borderColor:Platform.OS === 'ios' ? COLORS.main:COLORS.white,
                     borderWidth:1,
                     fontSize:16,
@@ -409,7 +418,7 @@ marginLeft:20
                           elevation: 10,
                           borderColor:Platform.OS === 'ios' ? COLORS.main:COLORS.white,
                           borderWidth:1,
-                          fontSize:16,
+                          fontSize:14,
                           fontWeight:'bold',
                           backgroundColor: COLORS.white,
                               },

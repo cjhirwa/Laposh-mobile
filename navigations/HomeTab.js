@@ -20,6 +20,9 @@ const HomeTab = () =>{
             if(token){
                 setLoggedIn(true)
             }
+            else{
+                setLoggedIn(false)
+            }
         }
         catch(e){
         }

@@ -3,6 +3,7 @@ import { AsyncStorage } from 'react-native';
 import { TextInput, Text, ScrollView,View, TouchableOpacity,ActivityIndicator,Alert,Image} from 'react-native'
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native'
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import styles from '../assets/css/styles';
 const Login = () => {
    const navigation = useNavigation();
@@ -53,10 +54,11 @@ const Login = () => {
             ],
             { cancelable: false}
           )
+          console.log(response.data.error)
         }
         else{
-          setLoading(false)
           await AsyncStorage.setItem('token',response.data.token);
+          setLoading(false)
           navigation.navigate('Home') 
         }
           }
@@ -81,11 +83,14 @@ console.log(e)
         </View> 
         <Text style={styles.subtitle}>Welcome Back</Text>
         <View style={styles.line}/>
+        {/* <View style={}> */}
       <Text style={styles.heading}>Email</Text>
-          <TextInput 
+      <MaterialCommunityIcons name="form-textbox-password" size={24} color="black" />
+          {/* <TextInput 
            onChangeText={(text)=>setEmail(text)}
           style={styles.input}
-          />
+          /> */}
+           {/* </View> */}
       <Text style={styles.heading}>
             Password
           </Text>

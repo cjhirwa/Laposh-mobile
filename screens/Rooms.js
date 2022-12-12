@@ -87,10 +87,10 @@ const Rooms = () => {
             <Text style={styles.price} ><Text>$ </Text>{item.price}<Text> /day</Text></Text>
             </View>
             <View style={styles.specials}>
-              <Text> Free wifi</Text>
-              <Text> | Fridge</Text>
-              <Text> | Flat TV</Text>
-              <Text> | Italian breakfast</Text>
+              <Text style={{width:70}}> Free wifi</Text>
+              <Text style={{width:60}}> | Fridge</Text>
+              <Text style={{width:70}}> | Flat TV</Text>
+              <Text style={{width:120}}> | Italian breakfast</Text>
             </View>
         </View>
         </View>

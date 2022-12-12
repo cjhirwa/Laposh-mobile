@@ -12,12 +12,29 @@ const Signup = () => {
     const [cpassword,setCPassword]=useState('');
     const [isLoading,setLoading]=useState(false);
 
+     const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+
     const Register=async()=>{
      
       if(firstName=="" || lastName=="" || email=="" || password=="" || cpassword==""){
         Alert.alert(
           'Warning',
           'All field are required!',
+          [
+            {
+              text: 'Ok',
+              onPress: () =>{
+                navigation.navigate('Signup')
+            }
+            },
+          ],
+          { cancelable: false}
+        )
+      }
+      else if(reg.test(email) === false){
+        Alert.alert(
+          'Warning',
+          `Email is invalid, correct it and try again`,
           [
             {
               text: 'Ok',

@@ -25,7 +25,6 @@ const Header = () => {
         <View>
             <Image style={styles.logo} source={require("../assets/icon.png")} />
         </View>
-
         {isLoggedIn?
         <View style={{marginTop:10}}>
         <TouchableOpacity

@@ -42,7 +42,7 @@ const formatDate=(item)=>{
     }
   }
 
-  useEffect(()=>{getData()},[]);
+  useEffect(()=>{getData()});
     const navigation = useNavigation();
     return(
       <SafeAreaView>

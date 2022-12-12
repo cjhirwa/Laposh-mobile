@@ -15,7 +15,7 @@ const Bookable = ({route}) => {
     const [isLoggedIn,setLoggedIn]=useState(false);
     const [name,setName]=useState('');
     const [specifications,setSpecifications]=useState('');
-    const [price,setPrice]=useState('');
+    const [price,setPrice]=useState();
     const [image,setImage]=useState('');
     const getRoom=async (id)=>{
         try{
@@ -70,7 +70,7 @@ const Bookable = ({route}) => {
         {isLoggedIn?
         <TouchableOpacity
             style={styles.button}
-            onPress={()=>navigation.navigate("Reserve",{rid:route.params.rid,check_in_date:route.params.cindate,check_out_date:route.params.coutdate})}
+            onPress={()=>navigation.navigate("Reserve",{rid:route.params.rid,name:name,price:price,check_in_date:route.params.cindate,check_out_date:route.params.coutdate})}
         >
         <Text>Reserve a stay</Text>
         </TouchableOpacity>:

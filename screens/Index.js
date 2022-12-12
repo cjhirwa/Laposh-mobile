@@ -31,7 +31,7 @@ function useInput() {
     }
 }
 
-const Home = () => {
+const Index = () => {
     const input = useInput(new Date())
     const input2 = useInput(new Date())
     const navigation = useNavigation();
@@ -80,8 +80,6 @@ return (
         <Header/>
         <ImageBackground source={require('../assets/bg.jpg')} style={styles.imagebg}>
         <View style={[styles.check, styles.elevation]}>
-        <Text style={styles.theading}>Check room availability</Text>
-        <View style={styles.line}/>
         <Text style={styles.heading}>Arrival</Text>
            <TouchableOpacity             
               onPress={input.showDatepicker}
@@ -130,6 +128,6 @@ return (
               </SafeAreaView>
   )
 }
-export default Home;
+export default Index;
 
 
