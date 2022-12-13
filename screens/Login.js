@@ -68,7 +68,6 @@ const Login = () => {
     return (
       <ScrollView style={styles.container}>
       <View style={styles.main}>
-     
           {isLoading?
           <View style= {styles.activityIndicator}>
             <ActivityIndicator

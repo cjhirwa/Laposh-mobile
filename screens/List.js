@@ -1,9 +1,9 @@
 import React, { useState,useEffect } from 'react'
 import axios from 'axios';
-import { Image,Text, View, TouchableOpacity, SafeAreaView,ActivityIndicator,FlatList} from 'react-native'
+import { Image,Text, View, TouchableOpacity,TextInput, SafeAreaView,ActivityIndicator,FlatList} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import { SearchBar } from 'react-native-elements';
 import styles from '../assets/css/styles';
+import { EvilIcons } from '@expo/vector-icons';
 import Header from '../components/header';
 const List = ({route}) => {
   const check_in_date=route.params.check_in_date;
@@ -52,20 +52,21 @@ const List = ({route}) => {
             /><Text style={styles.signup}>Loading rooms...</Text></View>:(
               <View>
               <View  style={styles.search}>
-        <SearchBar
-          round
-          lightTheme
-          platform={Platform.OS}
-          iconStyle={{backgroundColor:'#fff'}}
-          searchIcon={{ size: 24,color:'#000' }}
-          containerStyle={{backgroundColor: 'white'}}
-          onChangeText={(text) => searchFilter(text)}
-          onClear={(text) => searchFilter('')}
+       <View style={styles.sinput}>
+      <View style={styles.sicon}>
+      <EvilIcons name="search" size={29} color="black" />
+      </View>
+      <View style={{flex:8}}>
+          <TextInput 
+           onChangeText={(text) => searchFilter(text)}
+          onBlur={(text) => searchFilter('')}
           onCancel={(text) => searchFilter('')}
           placeholder="Search for a room..."
           value={search}
-         
-        />
+          style={styles.input_search}
+          />
+          </View>
+          </View>
         </View>
         <View style={styles.list}>
         <FlatList

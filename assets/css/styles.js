@@ -11,12 +11,15 @@ const styles = StyleSheet.create({
       flex: 1,
       position:'relative',
       backgroundColor:COLORS.white,
-      marginTop:50,
+      marginTop:0,
 
     },
     search:{
-      paddingBottom:10,
-      backgroundColor:'rgb(228, 228, 228)'
+      padding:5,
+      backgroundColor:COLORS.white,
+      marginBottom:10,
+      height:55,
+      marginLeft:-5,
   },
     activityIndicator: {
       flex: 1,
@@ -41,17 +44,29 @@ const styles = StyleSheet.create({
     },
     icons:{
       flex:1,
-      borderColor:'red',
       height:50,
       padding:10,
       marginLeft:10,
       borderTopLeftRadius: 4,
       borderBottomLeftRadius: 4,
-      elevation: Platform.OS === 'ios' ? 0:10,
-      borderColor:Platform.OS === 'ios' ? COLORS.main:COLORS.white,
+      elevation: Platform.OS === 'ios' ? 0:0,
+      borderColor:Platform.OS === 'ios' ? COLORS.main:COLORS.main,
       borderTopWidth:1,
       borderLeftWidth:1,
       borderBottomWidth:1,
+    },
+    sinput:{
+      flexDirection:'row',
+      width:"100%",
+      flex:1
+    },
+    sicon:{
+      height:45,
+      padding:10,
+      marginLeft:10,
+      backgroundColor:'rgb(228, 228, 228)',
+      borderTopLeftRadius:10,
+      borderBottomLeftRadius:10
     },
     cover:{
 color:'#0083A3',
@@ -147,7 +162,7 @@ fontWeight: '600',
         width:width,
         paddingBottom:160,
         marginTop:Platform.OS === 'ios' ?20:0,
-        marginBottom:Platform.OS === 'ios' ?70:0
+        marginBottom:Platform.OS === 'ios' ?70:45
       },
       mainForm: {
         backgroundColor: COLORS.white,
@@ -362,7 +377,7 @@ marginLeft:20
                   backgroundColor: COLORS.white,
                   paddingVertical: 30,
                   paddingHorizontal: 25,
-                  marginTop:70,
+                  marginTop:40,
                   marginHorizontal:10
                 },        
                 signupForm: {
@@ -387,8 +402,8 @@ marginLeft:20
                   paddingVertical: 50,
                   paddingHorizontal: 20,
                   marginTop:"15%",
-                  width:"80%",
-                  marginHorizontal:"10%",
+                  width:"90%",
+                  marginHorizontal:"5%",
                   elevation:40,
                 },
                 miniForm: {
@@ -456,6 +471,17 @@ marginLeft:20
                           fontWeight:'bold',
                           backgroundColor: COLORS.white,
                               },
+                              input_search:{
+                                marginBottom:1,
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                height:45,
+                                fontSize:16,
+                                fontWeight:'bold',
+                                backgroundColor:'rgb(228, 228, 228)',
+                                borderTopRightRadius:10,
+                                borderBottomRightRadius:10
+                                    },
                     dateinput:{
                           marginBottom:15,
                           alignItems: 'center',
