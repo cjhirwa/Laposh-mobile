@@ -53,11 +53,8 @@ const formatDate=(item)=>{
             style= {styles.indicator}
             size={70}
             /><Text style={styles.signup}>Loading...</Text></View>:(
-
       <View style={styles.mainForm}>
-      <View style={styles.label}>
         <Text style={styles.pheading}>Hello {fname}{', Here is the history of your reservations at La posh Hotel\n'}</Text>
-            </View>
             <FlatList
         data={reservations}
         renderItem={({item}) => 
@@ -84,8 +81,7 @@ const formatDate=(item)=>{
         </View>
         </View>
         }/>
-        </View>
-                
+        </View>   
         )
       }
         </View>

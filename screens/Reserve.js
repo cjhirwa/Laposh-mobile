@@ -2,7 +2,6 @@ import React,{useState,useEffect} from 'react'
 import axios from 'axios';
 import { TextInput,SafeAreaView, ActivityIndicator,Text,ScrollView,Alert, View, KeyboardAvoidingView} from 'react-native'
 import styles from '../assets/css/styles';
-import Header from '../components/header';
 import { StripeProvider } from '@stripe/stripe-react-native';
 import {PUBLISHABLE_KEY} from '@env';
 import Payment from '../components/Payment';
