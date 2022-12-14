@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react'
 import axios from 'axios';
-import { Image,Text, View, TouchableOpacity,TextInput, SafeAreaView,ActivityIndicator,FlatList} from 'react-native'
+import { Image,Text, View, TouchableOpacity,TextInput, SafeAreaView,ActivityIndicator,FlatList,RefreshControl} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import styles from '../assets/css/styles';
 import { EvilIcons } from '@expo/vector-icons';
@@ -10,6 +10,7 @@ const List = ({route}) => {
   const check_out_date=route.params.check_out_date;
   const url='https://reservation-zeta.vercel.app/list/'+check_in_date+'/'+check_out_date;
   const [isLoading,setLoading]=useState(true);
+  const [refreshing, setRefreshing] = useState(false);
   const [search, setSearch] = useState('');
   const [filteredRooms, setFilteredRooms] = useState([]);
   const [rooms, setRooms] = useState([]);
@@ -37,6 +38,13 @@ const List = ({route}) => {
       setFilteredRooms(rooms);
       setSearch(text);
     }
+  };
+  const onRefresh = () => {
+    setRefreshing(true);
+    setTimeout(() => {
+      getRooms()
+      setRefreshing(false);
+    }, 5000);
   };
 
   useEffect(()=>{getRooms()},[]);
@@ -94,6 +102,10 @@ const List = ({route}) => {
         </View>
         </View>
         </TouchableOpacity>
+        }
+        refreshControl={
+        <RefreshControl refreshing={refreshing} 
+          onRefresh={onRefresh}/>
         }
       />   
       </View>

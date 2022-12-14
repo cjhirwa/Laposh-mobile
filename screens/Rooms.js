@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react'
 import axios from 'axios';
-import { Image,Text, View, TouchableOpacity, SafeAreaView,TextInput, ActivityIndicator,FlatList} from 'react-native'
+import { Image,Text, View, TouchableOpacity, SafeAreaView,TextInput, ActivityIndicator,FlatList,RefreshControl} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { EvilIcons } from '@expo/vector-icons'; 
 import styles from '../assets/css/styles';
@@ -8,6 +8,7 @@ import Header from '../components/header';
 const Rooms = () => {
   const url='https://reservation-zeta.vercel.app/rooms';
   const [isLoading,setLoading]=useState(true);
+  const [refreshing, setRefreshing] = useState(false);
   const [search, setSearch] = useState('');
   const [filteredRooms, setFilteredRooms] = useState([]);
   const [rooms, setRooms] = useState([]);
@@ -36,7 +37,13 @@ const Rooms = () => {
       setSearch(text);
     }
   };
-
+  const onRefresh = () => {
+    setRefreshing(true);
+    setTimeout(() => {
+      getRooms()
+      setRefreshing(false);
+    }, 5000);
+  };
   useEffect(()=>{getRooms()},[]);
     const navigation = useNavigation();
     return(
@@ -94,6 +101,10 @@ const Rooms = () => {
         </View>
         </TouchableOpacity>
         }
+        refreshControl={
+        <RefreshControl refreshing={refreshing} 
+          onRefresh={onRefresh}/>
+      } 
       />   
       </View>
       </View>
